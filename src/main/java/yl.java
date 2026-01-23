@@ -33,9 +33,47 @@ public class yl {
                 System.out.println("OK, I've marked this task as not done yet:");
                 System.out.println(tasks.get(num).toString());
             } else {
-                Task task = new Task(userInput);
-                tasks.add(task);
-                System.out.println("added: " + userInput);
+                String taskType = userInput.split(" ")[0];
+
+                switch (taskType) {
+                    case "todo": {
+                        String description = userInput.split(" ", 2)[1];
+                        Task task = new ToDos(description);
+                        tasks.add(task);
+                        System.out.println("Got it. I've added this task:");
+                        System.out.println(task);
+                        break;
+                    }
+
+                    case  "deadline": {
+                        String deadLineTask = userInput.split(" ", 2)[1];
+                        String description = deadLineTask.split(" /by ", 2)[0];
+                        String deadLine = deadLineTask.split(" /by ", 2)[1];
+                        Task task = new Deadline(description, deadLine);
+                        tasks.add(task);
+                        System.out.println("Got it. I've added this task:");
+                        System.out.println(task);
+                        break;
+                    }
+                    case  "event": {
+                        String eventTask = userInput.split(" ", 2)[1];
+                        String description = eventTask.split(" /from ", 2)[0];
+                        String duration = eventTask.split(" /from ", 2)[1];
+                        String start = duration.split(" /to ", 2)[0];
+                        String end = duration.split(" /to ", 2)[1];
+                        Task task = new Event(description, start, end);
+                        tasks.add(task);
+                        System.out.println("Got it. I've added this task:");
+                        System.out.println(task);
+                        break;
+                    }
+
+                    default:{
+                        System.out.println("No such task type");
+                    }
+
+                 }
+                System.out.println("Now you have " + tasks.size() + " tasks in the list.");
             }
         }
 
