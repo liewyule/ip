@@ -1,9 +1,11 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class yl {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
+        ArrayList<String> tasks = new ArrayList<>();
 
         System.out.println("Hello! I'm yl");
         System.out.println("What can I do for you");
@@ -14,8 +16,14 @@ public class yl {
             if (userInput.equals("bye")) {
                 System.out.println("Bye. Hope to see you again soon !");
                 break;
+            } else if (userInput.equals("list")) {
+                for (int i = 0; i < tasks.size(); i++) {
+                    System.out.println((i + 1) + "." + tasks.get(i));
+                }
+            } else {
+                tasks.add(userInput);
+                System.out.println("added: " + userInput);
             }
-            System.out.println(userInput);
         }
 
     }
