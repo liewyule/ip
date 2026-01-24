@@ -52,7 +52,7 @@ public class yl {
         int num = Integer.parseInt(checkNum) - 1;
 
         //check the number is within the bounds
-        if (num + 1 > tasks.size()) {
+        if (num + 1 > tasks.size() || num + 1 <= 0) {
             throw  new BotException("you only have " + tasks.size() + " tasks");
         }
         tasks.get(num).mark();
@@ -60,6 +60,27 @@ public class yl {
         System.out.println(tasks.get(num).toString());
     }
 
+    public static void handleDelete(String userInput, ArrayList<Task> tasks) throws BotException {
+        String checkNum = userInput.split(" ")[1];
+
+        //check the input after mark is a number
+        if (isNotInteger(checkNum)) {
+            throw new BotException("please indicate the task u want to delete as a number");
+        }
+
+        int num = Integer.parseInt(checkNum) - 1;
+
+        //check the number is within the bounds
+        if (num + 1 > tasks.size() || num + 1 <= 0) {
+            throw  new BotException("you only have " + tasks.size() + " tasks");
+        }
+
+
+        System.out.println("Noted. I've removed this task:");
+        System.out.println(tasks.get(num).toString());
+        tasks.remove(num);
+        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+    }
 
     public static void handleUnmark(String userInput, ArrayList<Task> tasks) throws BotException{
         String checkNum = userInput.split(" ")[1];
@@ -72,7 +93,7 @@ public class yl {
         int num = Integer.parseInt(checkNum) - 1;
 
         //check the number is within the bounds
-        if (num + 1 > tasks.size()) {
+        if (num + 1 > tasks.size() || num + 1 <= 0) {
             throw  new BotException("you only have " + tasks.size() + " tasks");
         }
 
@@ -179,9 +200,11 @@ public class yl {
             case "event":
                 handleEvent(userInput, tasks);
                 break;
+            case "delete":
+                handleDelete(userInput, tasks);
+                break;
             default:
                 throw new BotException("OOPS!!! I'm sorry, but I don't know what that means :-(");
-
         }
 
     }
