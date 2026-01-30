@@ -1,11 +1,15 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
+
 public class yl {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
         ArrayList<Task> tasks = new ArrayList<>();
+
+        Storage storage = new Storage();
+        tasks = storage.load();
 
         printHello();
 
@@ -19,6 +23,7 @@ public class yl {
 
             try {
                 handleCommand(userInput, tasks);
+                storage.save(tasks);
             } catch (BotException e) {
                 System.out.println(e.getMessage());
             }
@@ -41,7 +46,7 @@ public class yl {
         }
     }
 
-    public static void handleMark(String userInput, ArrayList<Task> tasks) throws BotException{
+    public static void handleMark(String userInput, ArrayList<Task> tasks) throws BotException {
         String checkNum = userInput.split(" ")[1];
 
         //check the input after mark is a number
@@ -53,7 +58,7 @@ public class yl {
 
         //check the number is within the bounds
         if (num + 1 > tasks.size() || num + 1 <= 0) {
-            throw  new BotException("you only have " + tasks.size() + " tasks");
+            throw new BotException("you only have " + tasks.size() + " tasks");
         }
         tasks.get(num).mark();
         System.out.println("Nice! I've marked this task as done:");
@@ -72,7 +77,7 @@ public class yl {
 
         //check the number is within the bounds
         if (num + 1 > tasks.size() || num + 1 <= 0) {
-            throw  new BotException("you only have " + tasks.size() + " tasks");
+            throw new BotException("you only have " + tasks.size() + " tasks");
         }
 
 
@@ -82,7 +87,7 @@ public class yl {
         System.out.println("Now you have " + tasks.size() + " tasks in the list.");
     }
 
-    public static void handleUnmark(String userInput, ArrayList<Task> tasks) throws BotException{
+    public static void handleUnmark(String userInput, ArrayList<Task> tasks) throws BotException {
         String checkNum = userInput.split(" ")[1];
 
         //check the input after mark is a number
@@ -94,7 +99,7 @@ public class yl {
 
         //check the number is within the bounds
         if (num + 1 > tasks.size() || num + 1 <= 0) {
-            throw  new BotException("you only have " + tasks.size() + " tasks");
+            throw new BotException("you only have " + tasks.size() + " tasks");
         }
 
         tasks.get(num).unmark();
@@ -106,13 +111,13 @@ public class yl {
         return !s.matches("\\d+");
     }
 
-    public static void handleTodo(String userInput, ArrayList<Task> tasks) throws BotException{
+    public static void handleTodo(String userInput, ArrayList<Task> tasks) throws BotException {
         //check todo task cannot be empty
         String[] todo = userInput.split(" ", 2);
         if (todo.length < 2 || todo[1].trim().isEmpty()) {
             throw new BotException("todo cannot be empty!!!");
         }
-        String description =todo[1];
+        String description = todo[1];
         Task task = new ToDos(description);
         tasks.add(task);
         System.out.println("Got it. I've added this task:");
@@ -120,7 +125,7 @@ public class yl {
         System.out.println("Now you have " + tasks.size() + " tasks in the list.");
     }
 
-    public static void handleDeadline(String userInput, ArrayList<Task> tasks) throws BotException{
+    public static void handleDeadline(String userInput, ArrayList<Task> tasks) throws BotException {
 
         //check task cannot be empty
         String[] deadline = userInput.split(" ", 2);
@@ -140,12 +145,13 @@ public class yl {
         //create new task
         Task task = new Deadline(description, deadLine);
         tasks.add(task);
+
         System.out.println("Got it. I've added this task:");
         System.out.println(task);
         System.out.println("Now you have " + tasks.size() + " tasks in the list.");
     }
 
-    public static void handleEvent(String userInput, ArrayList<Task> tasks) throws BotException{
+    public static void handleEvent(String userInput, ArrayList<Task> tasks) throws BotException {
         //check task cannot be empty
         String[] checkEvent = userInput.split(" ", 2);
         if (checkEvent.length < 2 || checkEvent[1].trim().isEmpty()) {
@@ -158,7 +164,7 @@ public class yl {
         if (checkStart.length < 2 || checkStart[1].trim().isEmpty()) {
             throw new BotException("pls specify when the event start!");
         }
-        
+
         String description = checkStart[0];
         String checkTime = checkStart[1];
 
@@ -167,7 +173,7 @@ public class yl {
         if (checkEnd.length < 2 || checkEnd[1].trim().isEmpty()) {
             throw new BotException("pls specify when the event end!");
         }
-       
+
         String start = checkEnd[0];
         String end = checkEnd[1];
 
@@ -179,32 +185,32 @@ public class yl {
         System.out.println("Now you have " + tasks.size() + " tasks in the list.");
     }
 
-    public static void handleCommand(String userInput, ArrayList<Task> tasks) throws BotException{
+    public static void handleCommand(String userInput, ArrayList<Task> tasks) throws BotException {
         String taskType = userInput.split(" ", 2)[0];
         switch (taskType) {
-            case "list":
-                printList(tasks);
-                break;
-            case "mark":
-                handleMark(userInput, tasks);
-                break;
-            case "unmark":
-                handleUnmark(userInput, tasks);
-                break;
-            case "todo":
-                handleTodo(userInput, tasks);
-                break;
-            case "deadline":
-                handleDeadline(userInput, tasks);
-                break;
-            case "event":
-                handleEvent(userInput, tasks);
-                break;
-            case "delete":
-                handleDelete(userInput, tasks);
-                break;
-            default:
-                throw new BotException("OOPS!!! I'm sorry, but I don't know what that means :-(");
+        case "list":
+            printList(tasks);
+            break;
+        case "mark":
+            handleMark(userInput, tasks);
+            break;
+        case "unmark":
+            handleUnmark(userInput, tasks);
+            break;
+        case "todo":
+            handleTodo(userInput, tasks);
+            break;
+        case "deadline":
+            handleDeadline(userInput, tasks);
+            break;
+        case "event":
+            handleEvent(userInput, tasks);
+            break;
+        case "delete":
+            handleDelete(userInput, tasks);
+            break;
+        default:
+            throw new BotException("OOPS!!! I'm sorry, but I don't know what that means :-(");
         }
 
     }
