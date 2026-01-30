@@ -4,43 +4,46 @@ import java.time.LocalDateTime;
 
 
 public class yl {
+    private Storage storage;
+    private Ui ui;
+
+    public yl() {
+        this.storage = new Storage();
+        this.ui = new Ui();
+    }
 
 
-    public static void main(String[] args) {
-
+    public void run() {
         Scanner sc = new Scanner(System.in);
         ArrayList<Task> tasks = new ArrayList<>();
 
-        Storage storage = new Storage();
+
         tasks = storage.load();
 
-        printHello();
+        ui.printHello();
 
         while (true) {
             String userInput = sc.nextLine();
 
             if (userInput.equals("bye")) {
-                printGoodBye();
+                ui.printGoodBye();
                 break;
             }
 
             try {
                 handleCommand(userInput, tasks);
                 storage.save(tasks);
+                ui.printLine();
             } catch (BotException e) {
                 System.out.println(e.getMessage());
             }
         }
     }
 
-    public static void printHello() {
-        System.out.println("Hello! I'm yl");
-        System.out.println("What can I do for you");
+    public static void main(String[] args) {
+        new yl().run();
     }
 
-    public static void printGoodBye() {
-        System.out.println("Bye. Hope to see you again soon !");
-    }
 
     public static void printList(ArrayList<Task> tasks) {
         System.out.println("Here are the tasks in your list:");
