@@ -31,6 +31,7 @@ public class Storage {
                 Task task = null;
                 if (taskType.equals("T")) {
                     task = new ToDos(description);
+
                 } else if (taskType.equals("D")) {
                     String deadline = parts[3];
 
@@ -41,6 +42,9 @@ public class Storage {
                     task = new Event(description, from, to);
                 }
                 tasks.add(task);
+                if (isDone) {
+                    task.mark();
+                }
             }
         } catch (IOException e) {
             System.out.println("Error loading tasks.");

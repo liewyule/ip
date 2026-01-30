@@ -8,7 +8,8 @@ public class DeleteCommand extends  Command{
 
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
-        tasks.delete(index);
+        Task deleteTask = tasks.delete(index);
+        ui.printDelete(deleteTask, tasks.size());
     }
 
 }

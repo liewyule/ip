@@ -8,45 +8,39 @@ public class TaskList {
     }
 
     public void printList() {
-        System.out.println("Here are the tasks in your list:");
         for (int i = 0; i < taskList.size(); i++) {
             System.out.println((i + 1) + "." + taskList.get(i).toString());
         }
     }
 
-    public void mark(int index) throws BotException {
+    public Task mark(int index) throws BotException {
         //check the number is within the bounds
         if (index + 1 > taskList.size() || index + 1 <= 0) {
             throw new BotException("you only have " + taskList.size() + " tasks");
         }
         taskList.get(index).mark();
-        System.out.println("Nice! I've marked this task as done:");
-        System.out.println(taskList.get(index).toString());
+        return taskList.get(index);
+
     }
 
-    public void unmark(int index) throws BotException {
+    public Task unmark(int index) throws BotException {
         //check the number is within the bounds
         if (index + 1 > taskList.size() || index + 1 <= 0) {
             throw new BotException("you only have " + taskList.size() + " tasks");
         }
 
         taskList.get(index).unmark();
-        System.out.println("OK, I've marked this task as not done yet:");
-        System.out.println(taskList.get(index).toString());
+        return taskList.get(index);
+
     }
 
-    public void delete(int index) throws BotException {
+    public Task delete(int index) throws BotException {
 
         //check the number is within the bounds
         if (index + 1 > taskList.size() || index + 1 <= 0) {
             throw new BotException("you only have " + taskList.size() + " tasks");
         }
-
-
-        System.out.println("Noted. I've removed this task:");
-        System.out.println(taskList.get(index).toString());
-        taskList.remove(index);
-        System.out.println("Now you have " + taskList.size() + " tasks in the list.");
+         return taskList.remove(index);
     }
 
     public ArrayList<Task> get() {

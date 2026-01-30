@@ -18,27 +18,19 @@ public class AddCommand extends Command{
         case "todo": {
             Task task = new ToDos(description);
             tasks.add(task);
-            System.out.println("Got it. I've added this task:");
-            System.out.println(task);
-            System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+            ui.printAddTask(task, tasks.size());
             break;
         }
         case "deadline": {
             Task task = new Deadline(description, to);
             tasks.add(task);
-
-            System.out.println("Got it. I've added this task:");
-            System.out.println(task);
-            System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+            ui.printAddTask(task, tasks.size());
             break;
         }
         case "event": {
-            //create new task
             Task task = new Event(description, from, to);
             tasks.add(task);
-            System.out.println("Got it. I've added this task:");
-            System.out.println(task);
-            System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+            ui.printAddTask(task, tasks.size());
             break;
         }
         }
