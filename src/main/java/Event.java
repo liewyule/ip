@@ -5,7 +5,7 @@ public class Event extends Task {
     private static final DateTimeFormatter INPUT_FORMAT =
             DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     private static final DateTimeFormatter OUTPUT_FORMAT =
-            DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+            DateTimeFormatter.ofPattern("MMM dd yyyy HHmm");
     protected LocalDateTime from;
     protected LocalDateTime by;
 
@@ -24,6 +24,6 @@ public class Event extends Task {
     @Override
     public String saveString() {
         return "E" + " | " + (this.isDone ? "1" : "0")  + " | " + this.description + " | "
-                + this.from.format(OUTPUT_FORMAT) + " | " + this.by.format(OUTPUT_FORMAT);
+                + this.from.format(INPUT_FORMAT) + " | " + this.by.format(INPUT_FORMAT);
     }
 }
