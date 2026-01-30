@@ -4,8 +4,6 @@ import java.nio.file.Paths;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDateTime;
-
 
 public class Storage {
     private Path filePath;
@@ -33,6 +31,7 @@ public class Storage {
                 Task task = null;
                 if (taskType.equals("T")) {
                     task = new ToDos(description);
+
                 } else if (taskType.equals("D")) {
                     String deadline = parts[3];
 
@@ -43,6 +42,9 @@ public class Storage {
                     task = new Event(description, from, to);
                 }
                 tasks.add(task);
+                if (isDone) {
+                    task.mark();
+                }
             }
         } catch (IOException e) {
             System.out.println("Error loading tasks.");
@@ -51,9 +53,9 @@ public class Storage {
         return tasks;
     }
 
-    public void save(ArrayList<Task> tasks) {
+    public void save(TaskList tasks) {
         ArrayList<String> saveTask = new ArrayList<>();
-        for (Task currTask : tasks) {
+        for (Task currTask : tasks.get()) {
             saveTask.add(currTask.saveString());
         }
 
