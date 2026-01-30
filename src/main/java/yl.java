@@ -9,6 +9,7 @@ public class yl {
         ArrayList<Task> tasks = new ArrayList<>();
 
         Storage storage = new Storage();
+        tasks = storage.load();
 
         printHello();
 
