@@ -1,0 +1,8 @@
+E | 0 | project meeting | 2019-12-05 1400 | 2019-12-05 1600
+T | 0 | read book
+D | 0 | submit report | 2024-01-15 2359
+E | 0 | exam | 2024-05-01 0900 | 2024-05-01 1100
+T | 0 | read book
+D | 0 | submit report | 2024-01-15 2359
+T | 0 | read book
+E | 0 | exam | 2024-05-01 0900 | 2024-05-01 1100
