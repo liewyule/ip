@@ -4,8 +4,6 @@ import java.nio.file.Paths;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDateTime;
-
 
 public class Storage {
     private Path filePath;
@@ -51,9 +49,9 @@ public class Storage {
         return tasks;
     }
 
-    public void save(ArrayList<Task> tasks) {
+    public void save(TaskList tasks) {
         ArrayList<String> saveTask = new ArrayList<>();
-        for (Task currTask : tasks) {
+        for (Task currTask : tasks.get()) {
             saveTask.add(currTask.saveString());
         }
 
