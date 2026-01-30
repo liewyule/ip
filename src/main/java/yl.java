@@ -16,22 +16,22 @@ public class yl {
 
 
     public void run() {
-        Scanner sc = new Scanner(System.in);
 
         ui.printHello();
-
-        while (true) {
+        boolean isExit = false;
+        while (!isExit) {
             String userInput = ui.readCommand();
-            ui.printLine();
 
             if (userInput.equals("bye")) {
                 ui.printGoodBye();
                 break;
             }
             try {
-                tasks.handleCommand(userInput);
+                Command c = Parser.parse(userInput);
+                c.execute(tasks, ui, storage);
                 storage.save(tasks);
                 ui.printLine();
+                isExit = c.isExit();
             } catch (BotException e) {
                 System.out.println(e.getMessage());
             }
