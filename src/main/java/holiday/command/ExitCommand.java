@@ -1,3 +1,10 @@
+package holiday.command;
+
+import holiday.ui.Ui;
+import holiday.task.TaskList;
+import holiday.storage.Storage;
+import holiday.BotException;
+
 public class ExitCommand extends  Command{
 
     @Override

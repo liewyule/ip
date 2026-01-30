@@ -1,3 +1,10 @@
+package holiday.command;
+
+import holiday.ui.Ui;
+import holiday.storage.Storage;
+import holiday.BotException;
+import holiday.task.*;
+
 public class AddCommand extends Command{
 
     private final String type;

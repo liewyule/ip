@@ -1,14 +1,17 @@
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.time.LocalDateTime;
+package holiday;
 
+import holiday.command.Command;
+import holiday.parser.Parser;
+import holiday.storage.Storage;
+import holiday.task.TaskList;
+import holiday.ui.Ui;
 
-public class yl {
+public class Holiday {
     private final Storage storage;
     private final Ui ui;
     private final TaskList tasks;
 
-    public yl() {
+    public Holiday() {
         this.storage = new Storage();
         this.ui = new Ui();
         this.tasks = new TaskList(storage.load());
@@ -39,7 +42,7 @@ public class yl {
     }
 
     public static void main(String[] args) {
-        new yl().run();
+        new Holiday().run();
     }
 
 }

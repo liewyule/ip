@@ -1,4 +1,7 @@
+package holiday.ui;
+
 import java.util.Scanner;
+import holiday.task.Task;
 
 public class Ui {
 
@@ -9,7 +12,7 @@ public class Ui {
     }
 
     public void printHello() {
-        System.out.println("Hello! I'm yl");
+        System.out.println("Hello! I'm Holiday");
         System.out.println("What can I do for you");
         this.printLine();
     }

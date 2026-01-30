@@ -1,3 +1,8 @@
+package holiday.parser;
+
+import holiday.command.*;
+import holiday.BotException;
+
 public class Parser {
 
     public static Command parse(String userInput) throws BotException {
