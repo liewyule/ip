@@ -9,9 +9,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Handles loading and saving tasks to the hard disk.
+ */
 public class Storage {
     private Path filePath;
 
+    /**
+     * Constructs a storage object and specify the data path.
+     * Create data directory if not exist.
+     */
     public Storage() {
         Path filePath = Paths.get("data", "taskList.txt");
         try {
@@ -22,6 +29,12 @@ public class Storage {
         this.filePath = filePath;
     }
 
+
+    /**
+     * Loads tasks from the filePath and reconstruct them.
+     *
+     * @return List of tasks that store in the filePath.
+     */
     public ArrayList<Task> load() {
         ArrayList<Task> tasks = new ArrayList<>();
         try {
@@ -57,6 +70,11 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Saves all tasks in the task list to the filePath.
+     *
+     * @param tasks The list of task to be saved.
+     */
     public void save(TaskList tasks) {
         ArrayList<String> saveTask = new ArrayList<>();
         for (Task currTask : tasks.get()) {
