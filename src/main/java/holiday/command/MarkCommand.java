@@ -1,12 +1,12 @@
 package holiday.command;
 
-import holiday.ui.Ui;
-import holiday.task.TaskList;
-import holiday.task.Task;
-import holiday.storage.Storage;
 import holiday.BotException;
+import holiday.storage.Storage;
+import holiday.task.Task;
+import holiday.task.TaskList;
+import holiday.ui.Ui;
 
-public class MarkCommand extends Command{
+public class MarkCommand extends Command {
 
     private final boolean isMark;
     private final int index;

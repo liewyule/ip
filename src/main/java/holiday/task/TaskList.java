@@ -1,12 +1,13 @@
 package holiday.task;
 
-import java.util.ArrayList;
 import holiday.BotException;
+
+import java.util.ArrayList;
 
 public class TaskList {
     private ArrayList<Task> taskList;
 
-    public TaskList (ArrayList<Task> taskList) {
+    public TaskList(ArrayList<Task> taskList) {
         this.taskList = taskList;
     }
 
@@ -43,7 +44,7 @@ public class TaskList {
         if (index + 1 > taskList.size() || index + 1 <= 0) {
             throw new BotException("you only have " + taskList.size() + " tasks");
         }
-         return taskList.remove(index);
+        return taskList.remove(index);
     }
 
     public ArrayList<Task> get() {
@@ -53,6 +54,7 @@ public class TaskList {
     public void add(Task task) {
         taskList.add(task);
     }
+
     public int size() {
         return this.taskList.size();
     }
