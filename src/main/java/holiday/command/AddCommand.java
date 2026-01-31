@@ -5,6 +5,9 @@ import holiday.storage.Storage;
 import holiday.BotException;
 import holiday.task.*;
 
+/**
+ * Represents a command that adds a new task to the task list.
+ */
 public class AddCommand extends Command{
 
     private final String type;
@@ -19,6 +22,20 @@ public class AddCommand extends Command{
         this.to = to;
     }
 
+    /**
+     * Execute the add command by creating the corresponding task.
+     * and adding it to the task list.
+     *
+     * <p>
+     *     Creates different task base on the input task typr
+     *     (e.g. "todo", "deadline", "event")
+     * </p>
+     *
+     * @param tasks Task list to add the task to.
+     * @param ui UI for displaying feedback.
+     * @param storage
+     * @throws BotException
+     */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
         switch (this.type) {

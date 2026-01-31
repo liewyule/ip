@@ -3,6 +3,10 @@ package holiday.task;
 import java.util.ArrayList;
 import holiday.BotException;
 
+/**
+ * Represents a list of tasks and provides operation
+ * to manage tasks
+ */
 public class TaskList {
     private ArrayList<Task> taskList;
 
@@ -10,12 +14,22 @@ public class TaskList {
         this.taskList = taskList;
     }
 
+    /**
+     * Prints all tasks in lists
+     */
     public void printList() {
         for (int i = 0; i < taskList.size(); i++) {
             System.out.println((i + 1) + "." + taskList.get(i).toString());
         }
     }
 
+    /**
+     * Marks the tasks of the given index as completed.
+     *
+     * @param index Index of the task
+     * @return The updated task
+     * @throws BotException If the index is out of bounds.
+     */
     public Task mark(int index) throws BotException {
         //check the number is within the bounds
         if (index + 1 > taskList.size() || index + 1 <= 0) {
@@ -26,6 +40,13 @@ public class TaskList {
 
     }
 
+    /**
+     * Marks the tasks of the given index as not complete.
+     *
+     * @param index Index of the task
+     * @return The updated task
+     * @throws BotException If the index is out of bounds.
+     */
     public Task unmark(int index) throws BotException {
         //check the number is within the bounds
         if (index + 1 > taskList.size() || index + 1 <= 0) {
@@ -37,6 +58,13 @@ public class TaskList {
 
     }
 
+    /**
+     * Deletes the tasks of the given index.
+     *
+     * @param index Index of the task
+     * @return The deleted task
+     * @throws BotException If the index is out of bounds.
+     */
     public Task delete(int index) throws BotException {
 
         //check the number is within the bounds
@@ -46,13 +74,28 @@ public class TaskList {
          return taskList.remove(index);
     }
 
+    /**
+     * Gets the task ArrayList.
+     * @return Task ArrayList.
+     */
     public ArrayList<Task> get() {
         return this.taskList;
     }
 
+    /**
+     * Adds a specific task into the task list
+     *
+     * @param task The task to be added
+     */
     public void add(Task task) {
         taskList.add(task);
     }
+
+    /**
+     * Gets the number of task in the tasks list.
+     *
+     * @return Size of the Task ArrayList.
+     */
     public int size() {
         return this.taskList.size();
     }

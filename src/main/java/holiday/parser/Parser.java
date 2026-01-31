@@ -3,8 +3,22 @@ package holiday.parser;
 import holiday.command.*;
 import holiday.BotException;
 
+/**
+ * Parses raw user string input into Command.
+ * <p>
+ *     Contains helper method to extract information and validates
+ *     the input format.
+ * </p>
+ */
 public class Parser {
 
+    /**
+     * Parses the user raw input and returns the corresponding command.
+     *
+     * @param userInput Full command entered by user.
+     * @return Command instances that representing the user input.
+     * @throws BotException If the command is not recognize.
+     */
     public static Command parse(String userInput) throws BotException {
         String taskType = userInput.split(" ", 2)[0];
         switch (taskType) {
@@ -35,10 +49,24 @@ public class Parser {
         }
     }
 
+    /**
+     * Extracts whether the given string is a number
+     *
+     * @param s String to check
+     * @return True if s is not an integer and false otherwise.
+     */
     public static boolean isNotInteger(String s) {
         return !s.matches("\\d+");
     }
 
+    /**
+     * Extracts the task index from commands that require an index.
+     * (e.g., mark, unmark, delete).
+     *
+     * @param userInput Full command line entered by the user.
+     * @return Zero-based task index.
+     * @throws BotException  If the index is missing or not a valid number.
+     */
     public static int getIndex(String userInput) throws BotException {
         String checkNum = userInput.split(" ")[1];
 
@@ -49,6 +77,13 @@ public class Parser {
         return Integer.parseInt(checkNum) - 1;
     }
 
+    /**
+     * Extracts the description of a todos task command.
+     *
+     * @param userInput Todos task command from user.
+     * @return Todos task description
+     * @throws BotException If the description is missing or empty.
+     */
     public static String getTodo(String userInput) throws BotException {
         //check task description cannot be empty
         String[] task = userInput.split(" ", 2);
@@ -58,6 +93,13 @@ public class Parser {
         return task[1];
     }
 
+    /**
+     * Extracts the description and  deadline of a deadline task command.
+     *
+     * @param userInput Deadline task command from user.
+     * @return Deadline task description and deadline.
+     * @throws BotException If the description or deadline is missing or empty.
+     */
     public static String[] getDeadline(String userInput) throws BotException {
 
         //check task cannot be empty
@@ -78,6 +120,13 @@ public class Parser {
 
     }
 
+    /**
+     * Extracts the description, from time and to time of a event task command
+     *
+     * @param userInput Event task command from user.
+     * @return Event task description, from time and to time.
+     * @throws BotException If the description or from time or to time is missing or empty.
+     */
     public static String[] getEvent(String userInput) throws BotException {
         //check task cannot be empty
         String[] checkEvent = userInput.split(" ", 2);
