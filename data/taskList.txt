@@ -1,5 +1,5 @@
 D | 0 | CS2103T | 2026-02-01 1800
-T | 1 | finish assignment
-D | 0 | CS2103T | 2026-02-01 1800
 E | 0 | team meeting | 2026-02-01 1400 | 2026-02-01 1600
 E | 0 | meeting | 2026-02-02 1400 | 2026-02-02 1600
+T | 1 | shower
+D | 0 | group project | 2026-02-01 1500

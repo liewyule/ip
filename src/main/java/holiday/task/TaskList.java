@@ -15,14 +15,7 @@ public class TaskList {
         this.taskList = taskList;
     }
 
-    /**
-     * Prints all tasks in lists
-     */
-    public void printList() {
-        for (int i = 0; i < taskList.size(); i++) {
-            System.out.println((i + 1) + "." + taskList.get(i).toString());
-        }
-    }
+
 
     /**
      * Marks the tasks of the given index as completed.

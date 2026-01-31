@@ -45,7 +45,6 @@ public class Holiday {
             try {
                 Command c = Parser.parse(userInput);
                 c.execute(tasks, ui, storage);
-                storage.save(tasks);
                 ui.printLine();
                 isExit = c.isExit();
             } catch (BotException e) {
