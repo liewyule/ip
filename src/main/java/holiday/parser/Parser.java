@@ -1,7 +1,12 @@
 package holiday.parser;
 
-import holiday.command.*;
 import holiday.BotException;
+import holiday.command.AddCommand;
+import holiday.command.Command;
+import holiday.command.DeleteCommand;
+import holiday.command.ExitCommand;
+import holiday.command.ListCommand;
+import holiday.command.MarkCommand;
 
 /**
  * Parses raw user string input into Command.

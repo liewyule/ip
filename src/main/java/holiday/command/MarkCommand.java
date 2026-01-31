@@ -1,10 +1,10 @@
 package holiday.command;
 
-import holiday.ui.Ui;
-import holiday.task.TaskList;
-import holiday.task.Task;
-import holiday.storage.Storage;
 import holiday.BotException;
+import holiday.storage.Storage;
+import holiday.task.Task;
+import holiday.task.TaskList;
+import holiday.ui.Ui;
 
 /**
  * Represents a command that mark or unmark a task of the task list.

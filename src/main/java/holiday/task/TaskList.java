@@ -1,7 +1,8 @@
 package holiday.task;
 
-import java.util.ArrayList;
 import holiday.BotException;
+
+import java.util.ArrayList;
 
 /**
  * Represents a list of tasks and provides operation
@@ -10,7 +11,7 @@ import holiday.BotException;
 public class TaskList {
     private ArrayList<Task> taskList;
 
-    public TaskList (ArrayList<Task> taskList) {
+    public TaskList(ArrayList<Task> taskList) {
         this.taskList = taskList;
     }
 
@@ -71,7 +72,7 @@ public class TaskList {
         if (index + 1 > taskList.size() || index + 1 <= 0) {
             throw new BotException("you only have " + taskList.size() + " tasks");
         }
-         return taskList.remove(index);
+        return taskList.remove(index);
     }
 
     /**

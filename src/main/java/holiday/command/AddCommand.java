@@ -1,9 +1,13 @@
 package holiday.command;
 
-import holiday.ui.Ui;
-import holiday.storage.Storage;
 import holiday.BotException;
-import holiday.task.*;
+import holiday.storage.Storage;
+import holiday.task.Deadline;
+import holiday.task.Event;
+import holiday.task.Task;
+import holiday.task.TaskList;
+import holiday.task.ToDos;
+import holiday.ui.Ui;
 
 /**
  * Represents a command that adds a new task to the task list.

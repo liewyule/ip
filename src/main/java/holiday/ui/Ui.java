@@ -1,7 +1,8 @@
 package holiday.ui;
 
-import java.util.Scanner;
 import holiday.task.Task;
+
+import java.util.Scanner;
 
 /**
  * Handles all user interactions for the Holiday chatbot
