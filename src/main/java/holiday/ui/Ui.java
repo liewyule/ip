@@ -1,7 +1,9 @@
 package holiday.ui;
 
 import holiday.task.Task;
+import holiday.task.TaskList;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -87,9 +89,14 @@ public class Ui {
 
     /**
      * Prints the header message before listing tasks.
+     * Print all the task in the list.
      */
-    public void printList() {
+    public void printList(TaskList tasks) {
         System.out.println("Here are the tasks in your list:");
+        ArrayList<Task> taskList = tasks.get();
+        for (int i = 0; i < taskList.size(); i++) {
+            System.out.println((i + 1) + "." + taskList.get(i).toString());
+        }
     }
 
     /**
@@ -102,5 +109,22 @@ public class Ui {
         System.out.println("Got it. I've added this task:");
         System.out.println(task);
         System.out.println("Now you have " + total + " tasks in the list.");
+    }
+
+    /**
+     * Prints all the task that matching the find keyword.
+     *
+     * @param printTasks Tasks to be printed.
+     */
+    public void printFind(ArrayList<Task> printTasks) {
+        if (printTasks.isEmpty()) {
+            System.out.println("Oh no, there are no matching tasks in your list!");
+        } else {
+            System.out.println("Here are the matching tasks in your list:");
+            for (int i = 0; i < printTasks.size(); i++) {
+                System.out.println((i + 1) + "." + printTasks.get(i).toString());
+            }
+
+        }
     }
 }

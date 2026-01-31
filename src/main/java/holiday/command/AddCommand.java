@@ -47,18 +47,21 @@ public class AddCommand extends Command{
             Task task = new ToDos(description);
             tasks.add(task);
             ui.printAddTask(task, tasks.size());
+            storage.save(tasks);
             break;
         }
         case "deadline": {
             Task task = new Deadline(description, to);
             tasks.add(task);
             ui.printAddTask(task, tasks.size());
+            storage.save(tasks);
             break;
         }
         case "event": {
             Task task = new Event(description, from, to);
             tasks.add(task);
             ui.printAddTask(task, tasks.size());
+            storage.save(tasks);
             break;
         }
         }
