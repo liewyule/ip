@@ -53,6 +53,10 @@ public class Holiday {
         }
     }
 
+    public String getResponse(String input) {
+        return "Holiday heard: " + input;
+    }
+
     public static void main(String[] args) {
         new Holiday().run();
     }
