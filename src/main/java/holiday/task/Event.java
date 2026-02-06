@@ -14,19 +14,19 @@ public class Event extends Task {
     private static final DateTimeFormatter OUTPUT_FORMAT =
             DateTimeFormatter.ofPattern("MMM dd yyyy HHmm");
     protected LocalDateTime from;
-    protected LocalDateTime by;
+    protected LocalDateTime to;
 
     /**
      * Constructs a event task with the specific description and time.
      *
      * @param description Description of the task.
      * @param from The starting time of the task.
-     * @param by The deadline of the task.
+     * @param to The deadline of the task.
      */
-    public Event(String description, String from, String by) {
+    public Event(String description, String from, String to) {
         super(description);
         this.from = LocalDateTime.parse(from, INPUT_FORMAT);
-        this.by = LocalDateTime.parse(by, INPUT_FORMAT);
+        this.to = LocalDateTime.parse(to, INPUT_FORMAT);
     }
 
 
@@ -38,7 +38,7 @@ public class Event extends Task {
     @Override
     public String toString() {
         return "[E]" + super.toString() + " (from: " + this.from.format(OUTPUT_FORMAT)
-                + " to: " + this.by.format(OUTPUT_FORMAT) + ")";
+                + " to: " + this.to.format(OUTPUT_FORMAT) + ")";
     }
 
     /**
@@ -47,8 +47,8 @@ public class Event extends Task {
      * @return Event task formatted as "MMM dd yyyy HHmm".
      */
     @Override
-    public String saveString() {
+    public String stringSaveToFile() {
         return "E" + " | " + (this.isDone ? "1" : "0") + " | " + this.description + " | "
-                + this.from.format(INPUT_FORMAT) + " | " + this.by.format(INPUT_FORMAT);
+                + this.from.format(INPUT_FORMAT) + " | " + this.to.format(INPUT_FORMAT);
     }
 }

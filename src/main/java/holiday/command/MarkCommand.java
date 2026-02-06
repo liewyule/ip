@@ -42,6 +42,6 @@ public class MarkCommand extends Command {
             Task unmarkTask = tasks.unmark(index);
             ui.printUnmark(unmarkTask);
         }
-        storage.save(tasks);
+        storage.saveTask(tasks);
     }
 }

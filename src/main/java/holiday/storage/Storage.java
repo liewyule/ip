@@ -11,7 +11,7 @@ import holiday.task.Deadline;
 import holiday.task.Event;
 import holiday.task.Task;
 import holiday.task.TaskList;
-import holiday.task.ToDos;
+import holiday.task.ToDo;
 
 /**
  * Handles loading and saving tasks to the hard disk.
@@ -39,7 +39,7 @@ public class Storage {
      *
      * @return List of tasks that store in the filePath.
      */
-    public ArrayList<Task> load() {
+    public ArrayList<Task> loadTask() {
         ArrayList<Task> tasks = new ArrayList<>();
         try {
             List<String> lines = Files.readAllLines(filePath);
@@ -51,7 +51,7 @@ public class Storage {
 
                 Task task = null;
                 if (taskType.equals("T")) {
-                    task = new ToDos(description);
+                    task = new ToDo(description);
 
                 } else if (taskType.equals("D")) {
                     String deadline = parts[3];
@@ -79,10 +79,10 @@ public class Storage {
      *
      * @param tasks The list of task to be saved.
      */
-    public void save(TaskList tasks) {
+    public void saveTask(TaskList tasks) {
         ArrayList<String> saveTask = new ArrayList<>();
         for (Task currTask : tasks.get()) {
-            saveTask.add(currTask.saveString());
+            saveTask.add(currTask.stringSaveToFile());
         }
 
         try {

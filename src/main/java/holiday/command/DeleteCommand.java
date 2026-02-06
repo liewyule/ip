@@ -32,8 +32,8 @@ public class DeleteCommand extends Command {
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
         Task deleteTask = tasks.delete(index);
-        ui.printDelete(deleteTask, tasks.size());
-        storage.save(tasks);
+        ui.printDeletedTask(deleteTask, tasks.size());
+        storage.saveTask(tasks);
     }
 
 }

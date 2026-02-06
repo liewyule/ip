@@ -40,6 +40,6 @@ public class FindCommand extends Command {
                 printTask.add(currTask);
             }
         }
-        ui.printFind(printTask);
+        ui.printMatchingTasks(printTask);
     }
 }

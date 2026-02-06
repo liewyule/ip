@@ -61,7 +61,7 @@ public class Ui {
      * @param task The deleted task.
      * @param total The total remaining number of tasks.
      */
-    public void printDelete(Task task, int total) {
+    public void printDeletedTask(Task task, int total) {
         System.out.println("Noted. I've removed this task:");
         System.out.println(task.toString());
         System.out.println("Now you have " + total + " tasks in the list.");
@@ -105,7 +105,7 @@ public class Ui {
      * @param task The added task.
      * @param total The total number of tasks.
      */
-    public void printAddTask(Task task, int total) {
+    public void printAddedTask(Task task, int total) {
         System.out.println("Got it. I've added this task:");
         System.out.println(task);
         System.out.println("Now you have " + total + " tasks in the list.");
@@ -116,7 +116,7 @@ public class Ui {
      *
      * @param printTasks Tasks to be printed.
      */
-    public void printFind(ArrayList<Task> printTasks) {
+    public void printMatchingTasks(ArrayList<Task> printTasks) {
         if (printTasks.isEmpty()) {
             System.out.println("Oh no, there are no matching tasks in your list!");
         } else {

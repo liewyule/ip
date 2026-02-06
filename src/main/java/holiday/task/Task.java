@@ -53,7 +53,7 @@ public class Task {
      *
      * @return Storage representation of the task.
      */
-    public String saveString() {
+    public String stringSaveToFile() {
         return "[" + getStatusIcon() + "] " + description;
     }
 }

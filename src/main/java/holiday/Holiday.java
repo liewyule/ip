@@ -22,7 +22,7 @@ public class Holiday {
     public Holiday() {
         this.storage = new Storage();
         this.ui = new Ui();
-        this.tasks = new TaskList(storage.load());
+        this.tasks = new TaskList(storage.loadTask());
     }
 
     /**

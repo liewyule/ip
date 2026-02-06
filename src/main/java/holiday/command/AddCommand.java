@@ -6,7 +6,7 @@ import holiday.task.Deadline;
 import holiday.task.Event;
 import holiday.task.Task;
 import holiday.task.TaskList;
-import holiday.task.ToDos;
+import holiday.task.ToDo;
 import holiday.ui.Ui;
 
 /**
@@ -51,24 +51,24 @@ public class AddCommand extends Command {
     public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
         switch (this.type) {
         case "todo": {
-            Task task = new ToDos(description);
+            Task task = new ToDo(description);
             tasks.add(task);
-            ui.printAddTask(task, tasks.size());
-            storage.save(tasks);
+            ui.printAddedTask(task, tasks.size());
+            storage.saveTask(tasks);
             break;
         }
         case "deadline": {
             Task task = new Deadline(description, to);
             tasks.add(task);
-            ui.printAddTask(task, tasks.size());
-            storage.save(tasks);
+            ui.printAddedTask(task, tasks.size());
+            storage.saveTask(tasks);
             break;
         }
         case "event": {
             Task task = new Event(description, from, to);
             tasks.add(task);
-            ui.printAddTask(task, tasks.size());
-            storage.save(tasks);
+            ui.printAddedTask(task, tasks.size());
+            storage.saveTask(tasks);
             break;
         }
         default: {

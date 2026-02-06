@@ -4,14 +4,14 @@ package holiday.task;
  * Represents a task with a description.
  * Extends form Task class.
  */
-public class ToDos extends Task {
+public class ToDo extends Task {
 
     /**
      * Constructs a todos task with the specific description.
      *
      * @param description Description of the task.
      */
-    public ToDos(String description) {
+    public ToDo(String description) {
         super(description);
     }
 
@@ -22,7 +22,7 @@ public class ToDos extends Task {
     }
 
     @Override
-    public String saveString() {
+    public String stringSaveToFile() {
         return "T" + " | " + (this.isDone ? "1" : "0")
                 + " | " + this.description;
     }

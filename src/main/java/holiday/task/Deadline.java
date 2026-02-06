@@ -12,7 +12,7 @@ public class Deadline extends Task {
             DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     private static final DateTimeFormatter OUTPUT_FORMAT =
             DateTimeFormatter.ofPattern("MMM dd yyyy HHmm");
-    protected LocalDateTime by;
+    protected LocalDateTime dueBy;
 
     /**
      * Constructs a deadline task with the specific description and deadline.
@@ -22,7 +22,7 @@ public class Deadline extends Task {
      */
     public Deadline(String description, String deadline) {
         super(description);
-        this.by = LocalDateTime.parse(deadline, INPUT_FORMAT);
+        this.dueBy = LocalDateTime.parse(deadline, INPUT_FORMAT);
     }
 
     /**
@@ -32,7 +32,7 @@ public class Deadline extends Task {
      */
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + this.by.format(OUTPUT_FORMAT) + ")";
+        return "[D]" + super.toString() + " (by: " + this.dueBy.format(OUTPUT_FORMAT) + ")";
     }
 
     /**
@@ -41,8 +41,8 @@ public class Deadline extends Task {
      * @return Deadline task formatted as "MMM dd yyyy HHmm".
      */
     @Override
-    public String saveString() {
+    public String stringSaveToFile() {
         return "D" + " | " + (this.isDone ? "1" : "0")
-                + " | " + this.description + " | " + this.by.format(INPUT_FORMAT);
+                + " | " + this.description + " | " + this.dueBy.format(INPUT_FORMAT);
     }
 }
