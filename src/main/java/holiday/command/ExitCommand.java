@@ -8,7 +8,7 @@ import holiday.ui.Ui;
 /**
  * Represents a command that exit the program.
  */
-public class ExitCommand extends  Command{
+public class ExitCommand extends Command {
 
     /**
      * Execute the ExitCommand and print the goodbye message.

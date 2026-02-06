@@ -1,10 +1,10 @@
 package holiday.ui;
 
-import holiday.task.Task;
-import holiday.task.TaskList;
-
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import holiday.task.Task;
+import holiday.task.TaskList;
 
 /**
  * Handles all user interactions for the Holiday chatbot
@@ -49,7 +49,7 @@ public class Ui {
     }
 
     /**
-     *Prints an error message.
+     * Prints an error message.
      */
     public void printError() {
         System.out.println("Oh no! something went wrong :(, try again later");

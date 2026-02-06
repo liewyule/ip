@@ -8,7 +8,7 @@ import holiday.ui.Ui;
 /**
  * Represents a command that list the task in the task list.
  */
-public class ListCommand extends Command{
+public class ListCommand extends Command {
 
     /**
      * Execute the ListCommand and print out the task list.

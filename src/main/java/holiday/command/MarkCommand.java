@@ -9,7 +9,7 @@ import holiday.ui.Ui;
 /**
  * Represents a command that mark or unmark a task of the task list.
  */
-public class MarkCommand extends Command{
+public class MarkCommand extends Command {
 
     private final boolean isMark;
     private final int index;

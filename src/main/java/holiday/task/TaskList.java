@@ -1,8 +1,8 @@
 package holiday.task;
 
-import holiday.BotException;
-
 import java.util.ArrayList;
+
+import holiday.BotException;
 
 /**
  * Represents a list of tasks and provides operation

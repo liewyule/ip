@@ -4,7 +4,7 @@ package holiday.task;
  * Represents a task with a description.
  * Extends form Task class.
  */
-public class ToDos extends Task{
+public class ToDos extends Task {
 
     /**
      * Constructs a todos task with the specific description.

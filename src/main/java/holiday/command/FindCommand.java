@@ -1,17 +1,17 @@
 package holiday.command;
 
+import java.util.ArrayList;
+
 import holiday.BotException;
 import holiday.storage.Storage;
 import holiday.task.Task;
 import holiday.task.TaskList;
 import holiday.ui.Ui;
 
-import java.util.ArrayList;
-
 /**
  * Represents a command that find the task in the task list.
  */
-public class FindCommand extends Command{
+public class FindCommand extends Command {
 
     private final String keyword;
 

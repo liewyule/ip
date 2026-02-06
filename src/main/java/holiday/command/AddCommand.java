@@ -12,13 +12,20 @@ import holiday.ui.Ui;
 /**
  * Represents a command that adds a new task to the task list.
  */
-public class AddCommand extends Command{
+public class AddCommand extends Command {
 
     private final String type;
     private final String description;
     private final String from;
     private final String to;
 
+    /**
+     * Construct a addcomand
+     * @param type
+     * @param description
+     * @param from
+     * @param to
+     */
     public AddCommand(String type, String description, String from, String to) {
         this.type = type;
         this.description = description;
@@ -63,6 +70,9 @@ public class AddCommand extends Command{
             ui.printAddTask(task, tasks.size());
             storage.save(tasks);
             break;
+        }
+        default: {
+            ui.printError();
         }
         }
     }
