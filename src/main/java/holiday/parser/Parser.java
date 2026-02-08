@@ -6,6 +6,7 @@ import holiday.command.Command;
 import holiday.command.DeleteCommand;
 import holiday.command.ExitCommand;
 import holiday.command.FindCommand;
+import holiday.command.GreetingCommand;
 import holiday.command.ListCommand;
 import holiday.command.MarkCommand;
 
@@ -28,6 +29,8 @@ public class Parser {
     public static Command parse(String userInput) throws BotException {
         String taskType = userInput.split(" ", 2)[0];
         switch (taskType) {
+        case "hello":
+            return new GreetingCommand();
         case "list":
             return new ListCommand();
         case "mark":
