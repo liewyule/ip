@@ -111,13 +111,14 @@ public class Parser {
      * @return Keywords of the find command
      * @throws BotException If the keyword is missing or empty.
      */
-    public static String getFind(String userInput) throws BotException {
+    public static String[] getFind(String userInput) throws BotException {
         //check find description cannot be empty
         String[] task = userInput.split(" ", 2);
         if (task.length < 2 || task[1].trim().isEmpty()) {
             throw new BotException("Find keyword cannot be empty!!!");
         }
-        return task[1];
+        String[] keywords = task[1].trim().split("\\s+");
+        return keywords;
     }
 
     /**

@@ -22,7 +22,7 @@ public class Ui {
      * Prints the welcome message when the program start.
      */
     public String printHello() {
-        return "Hello! I'm Holiday" + "What can I do for you";
+        return "Hello! I'm Holiday. " + "What can I do for you";
     }
 
     /**

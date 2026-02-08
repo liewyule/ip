@@ -13,13 +13,13 @@ import holiday.ui.Ui;
  */
 public class FindCommand extends Command {
 
-    private final String keyword;
+    private final String[] keyword;
 
     /**
      * Construct a FindCommand by specifying a search keyword.
      * @param keyword Keyword to search the corresponding task.
      */
-    public FindCommand(String keyword) {
+    public FindCommand(String... keyword) {
         this.keyword = keyword;
     }
 
@@ -36,8 +36,11 @@ public class FindCommand extends Command {
     public String execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
         ArrayList<Task> printTask = new ArrayList<>();
         for (Task currTask : tasks.get()) {
-            if (currTask.toString().contains(this.keyword)) {
-                printTask.add(currTask);
+            for (String k : keyword) {
+                if (currTask.toString().contains(k)) {
+                    printTask.add(currTask);
+                    break;
+                }
             }
         }
         return ui.printMatchingTasks(printTask);
