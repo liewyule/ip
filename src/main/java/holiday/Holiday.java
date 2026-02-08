@@ -53,8 +53,13 @@ public class Holiday {
         }
     }
 
-    public String getResponse(String input) {
-        return "Holiday heard: " + input;
+    public String getResponse(String userInput) {
+        try {
+            Command c = Parser.parse(userInput);
+            return c.execute(tasks, ui, storage);
+        } catch (BotException e) {
+            return e.getMessage();
+        }
     }
 
     public static void main(String[] args) {

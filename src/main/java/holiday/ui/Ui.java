@@ -21,10 +21,8 @@ public class Ui {
     /**
      * Prints the welcome message when the program start.
      */
-    public void printHello() {
-        System.out.println("Hello! I'm Holiday");
-        System.out.println("What can I do for you");
-        this.printLine();
+    public String printHello() {
+        return "Hello! I'm Holiday" + "What can I do for you";
     }
 
     /**
@@ -37,8 +35,8 @@ public class Ui {
     /**
      * Prints the goodbye message when user input "bye" and program ends.
      */
-    public void printGoodBye() {
-        System.out.println("Bye. Hope to see you again soon !");
+    public String printGoodBye() {
+        return "Bye. Hope to see you again soon !";
     }
 
     /**
@@ -51,8 +49,8 @@ public class Ui {
     /**
      * Prints an error message.
      */
-    public void printError() {
-        System.out.println("Oh no! something went wrong :(, try again later");
+    public String printError() {
+        return "Oh no! something went wrong :(, try again later";
     }
 
     /**
@@ -61,10 +59,9 @@ public class Ui {
      * @param task The deleted task.
      * @param total The total remaining number of tasks.
      */
-    public void printDeletedTask(Task task, int total) {
-        System.out.println("Noted. I've removed this task:");
-        System.out.println(task.toString());
-        System.out.println("Now you have " + total + " tasks in the list.");
+    public String printDeletedTask(Task task, int total) {
+        return "Noted. I've removed this task:" + task.toString()
+                + "Now you have " + total + " tasks in the list.";
     }
 
     /**
@@ -72,9 +69,8 @@ public class Ui {
      *
      * @param task The unmarked task.
      */
-    public void printUnmark(Task task) {
-        System.out.println("OK, I've marked this task as not done yet:");
-        System.out.println(task.toString());
+    public String printUnmark(Task task) {
+        return "OK, I've marked this task as not done yet:" + task.toString();
     }
 
     /**
@@ -82,21 +78,26 @@ public class Ui {
      *
      * @param task The marked task.
      */
-    public void printMark(Task task) {
-        System.out.println("Nice! I've marked this task as done:");
-        System.out.println(task.toString());
+    public String printMark(Task task) {
+        return "Nice! I've marked this task as done:" + task.toString();
     }
 
     /**
      * Prints the header message before listing tasks.
      * Print all the task in the list.
      */
-    public void printList(TaskList tasks) {
-        System.out.println("Here are the tasks in your list:");
+    public String printList(TaskList tasks) {
+        StringBuilder stringbuilder = new StringBuilder();
+        stringbuilder.append("Here are the tasks in your list:\n");
+
         ArrayList<Task> taskList = tasks.get();
         for (int i = 0; i < taskList.size(); i++) {
-            System.out.println((i + 1) + "." + taskList.get(i).toString());
+            stringbuilder.append(i + 1)
+                    .append(". ")
+                    .append(taskList.get(i))
+                    .append("\n");
         }
+        return stringbuilder.toString().trim();
     }
 
     /**
@@ -105,10 +106,10 @@ public class Ui {
      * @param task The added task.
      * @param total The total number of tasks.
      */
-    public void printAddedTask(Task task, int total) {
-        System.out.println("Got it. I've added this task:");
-        System.out.println(task);
-        System.out.println("Now you have " + total + " tasks in the list.");
+    public String printAddedTask(Task task, int total) {
+        return "Got it. I've added this task:\n"
+                + task + "\n"
+                + "Now you have " + total + " tasks in the list.";
     }
 
     /**
@@ -116,15 +117,21 @@ public class Ui {
      *
      * @param printTasks Tasks to be printed.
      */
-    public void printMatchingTasks(ArrayList<Task> printTasks) {
-        if (printTasks.isEmpty()) {
-            System.out.println("Oh no, there are no matching tasks in your list!");
-        } else {
-            System.out.println("Here are the matching tasks in your list:");
-            for (int i = 0; i < printTasks.size(); i++) {
-                System.out.println((i + 1) + "." + printTasks.get(i).toString());
-            }
+    public String printMatchingTasks(ArrayList<Task> printTasks) {
+        StringBuilder stringbuilder = new StringBuilder();
 
+        if (printTasks.isEmpty()) {
+            return "Oh no, there are no matching tasks in your list!";
         }
+        stringbuilder.append("Here are the matching tasks in your list:\n");
+
+        for (int i = 0; i < printTasks.size(); i++) {
+            stringbuilder.append(i + 1)
+                    .append(". ")
+                    .append(printTasks.get(i))
+                    .append("\n");
+        }
+
+        return stringbuilder.toString().trim();
     }
 }

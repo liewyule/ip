@@ -19,8 +19,8 @@ public class ExitCommand extends Command {
      * @throws BotException
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
-        ui.printGoodBye();
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
+        return ui.printGoodBye();
     }
 
     /**

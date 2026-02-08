@@ -48,31 +48,28 @@ public class AddCommand extends Command {
      * @throws BotException
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
         switch (this.type) {
         case "todo": {
             Task task = new ToDo(description);
             tasks.add(task);
-            ui.printAddedTask(task, tasks.size());
             storage.saveTask(tasks);
-            break;
+            return ui.printAddedTask(task, tasks.size());
         }
         case "deadline": {
             Task task = new Deadline(description, to);
             tasks.add(task);
-            ui.printAddedTask(task, tasks.size());
             storage.saveTask(tasks);
-            break;
+            return ui.printAddedTask(task, tasks.size());
         }
         case "event": {
             Task task = new Event(description, from, to);
             tasks.add(task);
-            ui.printAddedTask(task, tasks.size());
             storage.saveTask(tasks);
-            break;
+            return ui.printAddedTask(task, tasks.size());
         }
         default: {
-            ui.printError();
+            return ui.printError();
         }
         }
     }

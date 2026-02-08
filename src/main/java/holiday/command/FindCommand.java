@@ -33,13 +33,13 @@ public class FindCommand extends Command {
      * @throws BotException
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
         ArrayList<Task> printTask = new ArrayList<>();
         for (Task currTask : tasks.get()) {
             if (currTask.toString().contains(this.keyword)) {
                 printTask.add(currTask);
             }
         }
-        ui.printMatchingTasks(printTask);
+        return ui.printMatchingTasks(printTask);
     }
 }

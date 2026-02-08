@@ -19,8 +19,8 @@ public class ListCommand extends Command {
      * @throws BotException
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
-        ui.printList(tasks);
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
+        return ui.printList(tasks);
 
     }
 }

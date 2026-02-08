@@ -34,14 +34,15 @@ public class MarkCommand extends Command {
      * @throws BotException
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
         if (isMark) {
             Task markTask = tasks.mark(index);
-            ui.printMark(markTask);
+            storage.saveTask(tasks);
+            return ui.printMark(markTask);
         } else {
             Task unmarkTask = tasks.unmark(index);
-            ui.printUnmark(unmarkTask);
+            storage.saveTask(tasks);
+            return ui.printUnmark(unmarkTask);
         }
-        storage.saveTask(tasks);
     }
 }
