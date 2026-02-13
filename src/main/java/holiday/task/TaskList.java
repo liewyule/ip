@@ -100,7 +100,8 @@ public class TaskList {
      * Sort the task list by description is alphabetical order
      */
     public void sortByName() {
-        taskList.sort(Comparator.comparing(Task::getDescription));
+        taskList.sort(Comparator.comparing(Task::getDescription,
+                String.CASE_INSENSITIVE_ORDER));
     }
 
     /**
