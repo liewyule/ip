@@ -19,6 +19,16 @@ import holiday.command.MarkCommand;
  */
 public class Parser {
 
+    private static final String CMD_TODO = "todo";
+    private static final String CMD_DEADLINE = "deadline";
+    private static final String CMD_EVENT = "event";
+    private static final String CMD_MARK = "mark";
+    private static final String CMD_UNMARK = "unmark";
+    private static final String CMD_DELETE = "delete";
+    private static final String CMD_FIND = "find";
+    private static final String CMD_LIST = "list";
+    private static final String CMD_BYE = "bye";
+    private static final String CMD_HELLO = "hello";
     /**
      * Parses the user raw input and returns the corresponding command.
      *
@@ -29,31 +39,31 @@ public class Parser {
     public static Command parse(String userInput) throws BotException {
         String taskType = userInput.split(" ", 2)[0];
         switch (taskType) {
-        case "hello":
+        case CMD_HELLO:
             return new GreetingCommand();
-        case "list":
+        case CMD_LIST:
             return new ListCommand();
-        case "mark":
+        case CMD_MARK:
             return new MarkCommand(true, getIndex(userInput));
-        case "unmark":
+        case CMD_UNMARK:
             return new MarkCommand(false, getIndex(userInput));
-        case "todo":
-            String todoDescription = getTodo(userInput);
+        case CMD_TODO:
+            String todoDescription = parseTodoArgs(userInput);
             return new AddCommand("todo", todoDescription, null, null);
-        case "deadline":
-            String deadlineDescription = getDeadline(userInput)[0];
-            String deadline = getDeadline(userInput)[1];
+        case CMD_DEADLINE:
+            String deadlineDescription = parseDeadlineArgs(userInput)[0];
+            String deadline = parseDeadlineArgs(userInput)[1];
             return new AddCommand("deadline", deadlineDescription, null, deadline);
-        case "event":
-            String eventDescription = getEvent(userInput)[0];
-            String from = getEvent(userInput)[1];
-            String to = getEvent(userInput)[2];
+        case CMD_EVENT:
+            String eventDescription = parseEventArgs(userInput)[0];
+            String from = parseEventArgs(userInput)[1];
+            String to = parseEventArgs(userInput)[2];
             return new AddCommand("event", eventDescription, from, to);
-        case "delete":
+        case CMD_DELETE:
             return new DeleteCommand(getIndex(userInput));
-        case "find":
-            return new FindCommand(getFind(userInput));
-        case "bye":
+        case CMD_FIND:
+            return new FindCommand(getFindKeywords(userInput));
+        case CMD_BYE:
             return new ExitCommand();
         default:
             throw new BotException("OOPS!!! I'm sorry, but I don't know what that means :-(");
@@ -95,7 +105,7 @@ public class Parser {
      * @return Todos task description
      * @throws BotException If the description is missing or empty.
      */
-    public static String getTodo(String userInput) throws BotException {
+    public static String parseTodoArgs(String userInput) throws BotException {
         //check task description cannot be empty
         String[] task = userInput.split(" ", 2);
         if (task.length < 2 || task[1].trim().isEmpty()) {
@@ -111,7 +121,7 @@ public class Parser {
      * @return Keywords of the find command
      * @throws BotException If the keyword is missing or empty.
      */
-    public static String[] getFind(String userInput) throws BotException {
+    public static String[] getFindKeywords(String userInput) throws BotException {
         //check find description cannot be empty
         String[] task = userInput.split(" ", 2);
         if (task.length < 2 || task[1].trim().isEmpty()) {
@@ -128,17 +138,17 @@ public class Parser {
      * @return Deadline task description and deadline.
      * @throws BotException If the description or deadline is missing or empty.
      */
-    public static String[] getDeadline(String userInput) throws BotException {
+    public static String[] parseDeadlineArgs(String userInput) throws BotException {
 
         //check task cannot be empty
-        String[] deadline = userInput.split(" ", 2);
-        if (deadline.length < 2 || deadline[1].trim().isEmpty()) {
+        String[] parts = userInput.split(" ", 2);
+        if (parts.length < 2 || parts[1].trim().isEmpty()) {
             throw new BotException("task cannot be empty!!!");
         }
-        String deadLineTask = deadline[1];
+        String descriptionAndDeadline = parts[1];
 
         //check the deadline cannot be empty
-        String[] checkTime = deadLineTask.split(" /by ", 2);
+        String[] checkTime = descriptionAndDeadline.split(" /by ", 2);
         if (checkTime.length < 2 || checkTime[1].trim().isEmpty()) {
             throw new BotException("pls specify a deadline");
         }
@@ -155,16 +165,16 @@ public class Parser {
      * @return Event task description, from time and to time.
      * @throws BotException If the description or from time or to time is missing or empty.
      */
-    public static String[] getEvent(String userInput) throws BotException {
+    public static String[] parseEventArgs(String userInput) throws BotException {
         //check task cannot be empty
-        String[] checkEvent = userInput.split(" ", 2);
-        if (checkEvent.length < 2 || checkEvent[1].trim().isEmpty()) {
+        String[] parts = userInput.split(" ", 2);
+        if (parts.length < 2 || parts[1].trim().isEmpty()) {
             throw new BotException("task cannot be empty!!!");
         }
-        String eventTask = checkEvent[1];
+        String descriptionAndTime = parts[1];
 
         //check the start date cannot be empty
-        String[] checkStart = eventTask.split(" /from ", 2);
+        String[] checkStart = descriptionAndTime.split(" /from ", 2);
         if (checkStart.length < 2 || checkStart[1].trim().isEmpty()) {
             throw new BotException("pls specify when the event start!");
         }
