@@ -14,6 +14,10 @@ import holiday.ui.Ui;
  */
 public class AddCommand extends Command {
 
+    public static final String TODO_TYPE = "todo";
+    public static final String DEADLINE_TYPE = "deadline";
+    public static final String EVENT_TYPE = "event";
+
     private final String type;
     private final String description;
     private final String from;
@@ -49,28 +53,27 @@ public class AddCommand extends Command {
      */
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
-        switch (this.type) {
-        case "todo": {
-            Task task = new ToDo(description);
-            tasks.add(task);
-            storage.saveTask(tasks);
-            return ui.printAddedTask(task, tasks.size());
-        }
-        case "deadline": {
-            Task task = new Deadline(description, to);
-            tasks.add(task);
-            storage.saveTask(tasks);
-            return ui.printAddedTask(task, tasks.size());
-        }
-        case "event": {
-            Task task = new Event(description, from, to);
-            tasks.add(task);
-            storage.saveTask(tasks);
-            return ui.printAddedTask(task, tasks.size());
-        }
-        default: {
+        Task task = createTask();
+
+        if (task == null) {
             return ui.printError();
         }
+
+        tasks.add(task);
+        storage.saveTask(tasks);
+        return ui.printAddedTask(task, tasks.size());
+    }
+
+    private Task createTask() {
+        switch (type) {
+        case TODO_TYPE:
+            return new ToDo(description);
+        case DEADLINE_TYPE:
+            return new Deadline(description, to);
+        case EVENT_TYPE:
+            return new Event(description, from, to);
+        default:
+            return null;
         }
     }
 }

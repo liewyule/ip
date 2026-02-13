@@ -25,34 +25,6 @@ public class Holiday {
         this.tasks = new TaskList(storage.loadTask());
     }
 
-    /**
-     * Runs the main chatbot.
-     * <p>
-     * Repeatedly reads a input from user and execute it.
-     * Stop when user exit with command "bye".
-     */
-    public void run() {
-
-        ui.printHello();
-        boolean isExit = false;
-        while (!isExit) {
-            String userInput = ui.readCommand();
-
-            if (userInput.equals("bye")) {
-                ui.printGoodBye();
-                break;
-            }
-            try {
-                Command c = Parser.parse(userInput);
-                c.execute(tasks, ui, storage);
-                ui.printLine();
-                isExit = c.isExit();
-            } catch (BotException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-    }
-
     public String getResponse(String userInput) {
         try {
             Command c = Parser.parse(userInput);
@@ -61,11 +33,6 @@ public class Holiday {
             return e.getMessage();
         }
     }
-
-    public static void main(String[] args) {
-        new Holiday().run();
-    }
-
 }
 
 
