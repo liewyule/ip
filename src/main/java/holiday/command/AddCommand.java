@@ -14,6 +14,10 @@ import holiday.ui.Ui;
  */
 public class AddCommand extends Command {
 
+    public static final String TODO_TYPE = "todo";
+    public static final String DEADLINE_TYPE = "deadline";
+    public static final String EVENT_TYPE = "event";
+
     private final String type;
     private final String description;
     private final String from;
@@ -21,6 +25,7 @@ public class AddCommand extends Command {
 
     /**
      * Construct a addcomand
+     *
      * @param type
      * @param description
      * @param from
@@ -38,48 +43,49 @@ public class AddCommand extends Command {
      * and adding it to the task list.
      *
      * <p>
-     *     Creates different task base on the input task typr
-     *     (e.g. "todo", "deadline", "event")
+     * Creates different task base on the input task typr
+     * (e.g. "todo", "deadline", "event")
      * </p>
      *
-     * @param tasks Task list to add the task to.
-     * @param ui UI for displaying feedback.
+     * @param tasks   Task list to add the task to.
+     * @param ui      UI for displaying feedback.
      * @param storage
      * @throws BotException
      */
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
-
         assert tasks != null : "TaskList cannot be null";
         assert ui != null : "Ui cannot be null";
         assert storage != null : "Storage cannot be null";
 
-        switch (this.type) {
-        case "todo": {
-            Task task = new ToDo(description);
-            tasks.add(task);
-            storage.saveTask(tasks);
-            return ui.printAddedTask(task, tasks.size());
-        }
-        case "deadline": {
+        Task task = createTask();
 
-            assert to != null && !to.isBlank()
-                    : "due date must be specify";
-
-            Task task = new Deadline(description, to);
-            tasks.add(task);
-            storage.saveTask(tasks);
-            return ui.printAddedTask(task, tasks.size());
-        }
-        case "event": {
-            Task task = new Event(description, from, to);
-            tasks.add(task);
-            storage.saveTask(tasks);
-            return ui.printAddedTask(task, tasks.size());
-        }
-        default: {
+        if (task == null) {
             return ui.printError();
         }
+
+        tasks.add(task);
+        storage.saveTask(tasks);
+        return ui.printAddedTask(task, tasks.size());
+    }
+
+    private Task createTask() {
+        switch (type) {
+        case TODO_TYPE:
+            return new ToDo(description);
+        case DEADLINE_TYPE:
+            assert to != null && !to.isBlank()
+                    : "due date must be specify";
+            return new Deadline(description, to);
+        case EVENT_TYPE:
+            assert from != null && !from.isBlank()
+                    : "start date must be specify";
+
+            assert to != null && !to.isBlank()
+                    : "end date must be specify";
+            return new Event(description, from, to);
+        default:
+            return null;
         }
     }
 }

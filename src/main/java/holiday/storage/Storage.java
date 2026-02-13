@@ -17,20 +17,24 @@ import holiday.task.ToDo;
  * Handles loading and saving tasks to the hard disk.
  */
 public class Storage {
-    private Path filePath;
+    private final Path filePath;
 
     /**
      * Constructs a storage object and specify the data path.
      * Create data directory if not exist.
      */
     public Storage() {
+        this.filePath = getFilePath();
+    }
+
+    private static Path getFilePath() {
         Path filePath = Paths.get("data", "taskList.txt");
         try {
             Files.createDirectories(filePath.getParent());
         } catch (IOException e) {
             System.out.println("Cannot create data folder.");
         }
-        this.filePath = filePath;
+        return filePath;
     }
 
 
@@ -44,33 +48,16 @@ public class Storage {
 
         ArrayList<Task> tasks = new ArrayList<>();
         try {
+            if (!Files.exists(filePath)) {
+                return tasks;
+            }
+
             List<String> lines = Files.readAllLines(filePath);
 
             for (String currLine : lines) {
-
-                String[] parts = currLine.split(" \\| ");
-                String taskType = parts[0];
-
-                boolean isDone = parts[1].equals("1");
-
-                String description = parts[2];
-
-                Task task = null;
-                if (taskType.equals("T")) {
-                    task = new ToDo(description);
-
-                } else if (taskType.equals("D")) {
-                    String deadline = parts[3];
-
-                    task = new Deadline(description, deadline);
-                } else {
-                    String from = parts[3];
-                    String to = parts[4];
-                    task = new Event(description, from, to);
-                }
-                tasks.add(task);
-                if (isDone) {
-                    task.mark();
+                Task task = parseTaskFromLine(currLine);
+                if (task != null) {
+                    tasks.add(task);
                 }
             }
         } catch (IOException e) {
@@ -80,15 +67,49 @@ public class Storage {
         return tasks;
     }
 
+    private Task parseTaskFromLine(String line) {
+        String[] parts = line.split(" \\| ");
+        Task task;
+
+        if (parts.length < 3) {
+            return null;
+        }
+
+        String type = parts[0];
+        boolean isDone = parts[1].equals("1");
+        String description = parts[2];
+
+        switch (type) {
+        case "T":
+            task = new ToDo(description);
+            break;
+        case "D":
+            if (parts.length < 4) {
+                return null;
+            }
+            task = new Deadline(description, parts[3]);
+            break;
+        case "E":
+            if (parts.length < 5) {
+                return null;
+            }
+            task = new Event(description, parts[3], parts[4]);
+            break;
+        default:
+            return null;
+        }
+        if (isDone) {
+            task.mark();
+        }
+        return task;
+    }
+
     /**
      * Saves all tasks in the task list to the filePath.
      *
      * @param tasks The list of task to be saved.
      */
     public void saveTask(TaskList tasks) {
-       assert tasks != null : "tasks saved cannot be null";
-       assert filePath != null : "filepath cannot be null";
-
         ArrayList<String> saveTask = new ArrayList<>();
         for (Task currTask : tasks.get()) {
             saveTask.add(currTask.stringSaveToFile());
@@ -99,6 +120,14 @@ public class Storage {
         } catch (IOException e) {
             System.out.println("Error saving tasks.");
         }
+    }
+
+    private static ArrayList<String> getSaveTask(TaskList tasks) {
+        ArrayList<String> saveTask = new ArrayList<>();
+        for (Task currTask : tasks.get()) {
+            saveTask.add(currTask.stringSaveToFile());
+        }
+        return saveTask;
     }
 }
 
