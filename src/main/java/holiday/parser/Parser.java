@@ -75,7 +75,13 @@ public class Parser {
         }
     }
 
-    public static String parseSortArgs(String userInput)  throws BotException {
+    /**
+     * Extract the parameter use for sorting
+     * @param userInput  Full command line entered by the user.
+     * @return parameter use for sorting
+     * @throws BotException If the user input format is not correct
+     */
+    public static String parseSortArgs(String userInput) throws BotException {
         String[] parts = userInput.split(" ");
         if (parts.length < 3) {
             throw new BotException("please specify the sort command in the format sort by name/sort by time");

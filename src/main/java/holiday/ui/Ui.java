@@ -25,12 +25,6 @@ public class Ui {
         return "Hello! I'm Holiday. " + "What can I do for you";
     }
 
-    /**
-     * Reads user input.
-     */
-    public String readCommand() {
-        return scanner.nextLine();
-    }
 
     /**
      * Prints the goodbye message when user input "bye" and program ends.
@@ -39,12 +33,6 @@ public class Ui {
         return "Bye. Hope to see you again soon !";
     }
 
-    /**
-     * Prints a separate line for each conversation.
-     */
-    public void printLine() {
-        System.out.println("---------------------------------------------------");
-    }
 
     /**
      * Prints an error message.
@@ -53,9 +41,14 @@ public class Ui {
         return "Oh no! something went wrong :(, try again later";
     }
 
+    /**
+     * Prints an error message when cannot recognise the command
+     * @return string that tell user no such command
+     */
     public String printNoSuchCommand() {
         return "OOPS!!! I'm sorry, but I don't know what that means :-(";
     }
+
     /**
      * Prints a message to indicate that the task has been deleted.
      *

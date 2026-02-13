@@ -2,10 +2,12 @@ package holiday.command;
 
 import holiday.BotException;
 import holiday.storage.Storage;
-import holiday.task.Task;
 import holiday.task.TaskList;
 import holiday.ui.Ui;
 
+/**
+ * Represent a command that sort the tasklist
+ */
 public class SortCommand extends Command {
 
     private final String description;
@@ -14,6 +16,14 @@ public class SortCommand extends Command {
         this.description = description;
     }
 
+    /**
+     *  Execute the sorting follow by name or time
+     * @param tasks Task list to mbe sorted.
+     * @param ui UI for displaying feedback.
+     * @param storage Storage to save the task
+     * @return A list of task that is sorted
+     * @throws BotException
+     */
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
 

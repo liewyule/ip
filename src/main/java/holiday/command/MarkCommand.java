@@ -30,7 +30,7 @@ public class MarkCommand extends Command {
      *
      * @param tasks Task list to mark/unmark the task.
      * @param ui UI for displaying feedback.
-     * @param storage
+     * @param storage Storage to save the task
      * @throws BotException
      */
     @Override

@@ -96,10 +96,17 @@ public class TaskList {
         return this.taskList.size();
     }
 
+    /**
+     * Sort the task list by description is alphabetical order
+     */
     public void sortByName() {
         taskList.sort(Comparator.comparing(Task::getDescription));
     }
 
+    /**
+     * Sort the task list according to the due time(deadline) and
+     * start time(event), Todo task sorted at the last
+     */
     public void sortByTime() {
         taskList.sort(Comparator.comparing(Task::getTime,
                 Comparator.nullsLast(Comparator.naturalOrder())));
