@@ -82,6 +82,7 @@ public class TaskList {
      * @param task The task to be added
      */
     public void add(Task task) {
+        assert taskList != null : "TaskList cannot be null";
         taskList.add(task);
     }
 
@@ -91,6 +92,7 @@ public class TaskList {
      * @return Size of the Task ArrayList.
      */
     public int size() {
+        assert taskList != null : "TaskList cannot be null";
         return this.taskList.size();
     }
 }

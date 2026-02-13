@@ -22,7 +22,17 @@ public class Deadline extends Task {
      */
     public Deadline(String description, String deadline) {
         super(description);
+
+        assert description != null && !description.isBlank()
+                : "Description should not be empty";
+
+        assert deadline != null && !deadline.isBlank()
+                : "Deadline string should not be empty";
+
         this.dueBy = LocalDateTime.parse(deadline, INPUT_FORMAT);
+
+        assert dueBy != null
+                : "Time should not be null";
     }
 
     /**

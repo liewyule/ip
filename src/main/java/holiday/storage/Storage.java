@@ -40,13 +40,19 @@ public class Storage {
      * @return List of tasks that store in the filePath.
      */
     public ArrayList<Task> loadTask() {
+        assert filePath != null : "File path should not be null";
+
         ArrayList<Task> tasks = new ArrayList<>();
         try {
             List<String> lines = Files.readAllLines(filePath);
+
             for (String currLine : lines) {
+
                 String[] parts = currLine.split(" \\| ");
                 String taskType = parts[0];
+
                 boolean isDone = parts[1].equals("1");
+
                 String description = parts[2];
 
                 Task task = null;
@@ -80,6 +86,9 @@ public class Storage {
      * @param tasks The list of task to be saved.
      */
     public void saveTask(TaskList tasks) {
+       assert tasks != null : "tasks saved cannot be null";
+       assert filePath != null : "filepath cannot be null";
+
         ArrayList<String> saveTask = new ArrayList<>();
         for (Task currTask : tasks.get()) {
             saveTask.add(currTask.stringSaveToFile());

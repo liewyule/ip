@@ -49,6 +49,11 @@ public class AddCommand extends Command {
      */
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
+
+        assert tasks != null : "TaskList cannot be null";
+        assert ui != null : "Ui cannot be null";
+        assert storage != null : "Storage cannot be null";
+
         switch (this.type) {
         case "todo": {
             Task task = new ToDo(description);
@@ -57,6 +62,10 @@ public class AddCommand extends Command {
             return ui.printAddedTask(task, tasks.size());
         }
         case "deadline": {
+
+            assert to != null && !to.isBlank()
+                    : "due date must be specify";
+
             Task task = new Deadline(description, to);
             tasks.add(task);
             storage.saveTask(tasks);

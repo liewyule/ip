@@ -60,6 +60,7 @@ public class Ui {
      * @param total The total remaining number of tasks.
      */
     public String printDeletedTask(Task task, int total) {
+        assert task != null : "Task deleted cannot be null";
         return "Noted. I've removed this task:" + task.toString()
                 + "Now you have " + total + " tasks in the list.";
     }
@@ -70,6 +71,7 @@ public class Ui {
      * @param task The unmarked task.
      */
     public String printUnmark(Task task) {
+        assert task != null : "Unmark task cannot be null";
         return "OK, I've marked this task as not done yet:" + task.toString();
     }
 
@@ -79,6 +81,7 @@ public class Ui {
      * @param task The marked task.
      */
     public String printMark(Task task) {
+        assert task != null : "Mark task cannot be null";
         return "Nice! I've marked this task as done:" + task.toString();
     }
 
@@ -87,6 +90,7 @@ public class Ui {
      * Print all the task in the list.
      */
     public String printList(TaskList tasks) {
+        assert tasks != null : "TaskList cannot be null";
         StringBuilder stringbuilder = new StringBuilder();
         stringbuilder.append("Here are the tasks in your list:\n");
 
@@ -107,6 +111,7 @@ public class Ui {
      * @param total The total number of tasks.
      */
     public String printAddedTask(Task task, int total) {
+        assert task != null : "Added task cannot be null";
         return "Got it. I've added this task:\n"
                 + task + "\n"
                 + "Now you have " + total + " tasks in the list.";
@@ -118,6 +123,7 @@ public class Ui {
      * @param printTasks Tasks to be printed.
      */
     public String printMatchingTasks(ArrayList<Task> printTasks) {
+        assert printTasks != null : "TaskList cannot be null";
         StringBuilder stringbuilder = new StringBuilder();
 
         if (printTasks.isEmpty()) {
