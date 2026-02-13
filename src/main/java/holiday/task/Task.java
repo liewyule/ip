@@ -56,4 +56,8 @@ public class Task {
     public String stringSaveToFile() {
         return "[" + getStatusIcon() + "] " + description;
     }
+
+    public String getDescription() {
+        return this.description;
+    }
 }

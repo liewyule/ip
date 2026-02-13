@@ -9,6 +9,7 @@ import holiday.command.FindCommand;
 import holiday.command.GreetingCommand;
 import holiday.command.ListCommand;
 import holiday.command.MarkCommand;
+import holiday.command.SortCommand;
 
 /**
  * Parses raw user string input into Command.
@@ -29,6 +30,7 @@ public class Parser {
     private static final String CMD_LIST = "list";
     private static final String CMD_BYE = "bye";
     private static final String CMD_HELLO = "hello";
+    private static final String CMD_SORT = "sort";
     /**
      * Parses the user raw input and returns the corresponding command.
      *
@@ -65,9 +67,20 @@ public class Parser {
             return new FindCommand(getFindKeywords(userInput));
         case CMD_BYE:
             return new ExitCommand();
+        case CMD_SORT:
+            String description = parseSortArgs(userInput);
+            return new SortCommand(description);
         default:
             throw new BotException("OOPS!!! I'm sorry, but I don't know what that means :-(");
         }
+    }
+
+    public static String parseSortArgs(String userInput)  throws BotException {
+        String[] parts = userInput.split(" ");
+        if (parts.length < 3) {
+            throw new BotException("please specify the sort command in the format sort by name/sort by time");
+        }
+        return parts[2];
     }
 
     /**

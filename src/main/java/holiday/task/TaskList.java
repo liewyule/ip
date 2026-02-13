@@ -1,6 +1,7 @@
 package holiday.task;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import holiday.BotException;
 
@@ -31,7 +32,6 @@ public class TaskList {
         }
         taskList.get(index).mark();
         return taskList.get(index);
-
     }
 
     /**
@@ -94,5 +94,9 @@ public class TaskList {
     public int size() {
         assert taskList != null : "TaskList cannot be null";
         return this.taskList.size();
+    }
+
+    public void sortByName() {
+        taskList.sort(Comparator.comparing(Task::getDescription));
     }
 }

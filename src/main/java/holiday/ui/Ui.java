@@ -53,6 +53,9 @@ public class Ui {
         return "Oh no! something went wrong :(, try again later";
     }
 
+    public String printNoSuchCommand() {
+        return "OOPS!!! I'm sorry, but I don't know what that means :-(";
+    }
     /**
      * Prints a message to indicate that the task has been deleted.
      *
