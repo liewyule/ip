@@ -31,6 +31,10 @@ public class DeleteCommand extends Command {
      */
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
+        assert tasks != null : "TaskList cannot be null";
+        assert ui != null : "Ui cannot be null";
+        assert storage != null : "Storage cannot be null";
+
         Task deleteTask = tasks.delete(index);
         storage.saveTask(tasks);
         return ui.printDeletedTask(deleteTask, tasks.size());
