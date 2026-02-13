@@ -89,6 +89,8 @@ public class Parser {
      * @throws BotException  If the index is missing or not a valid number.
      */
     public static int getIndex(String userInput) throws BotException {
+        assert userInput != null : "Input should not be null";
+
         String checkNum = userInput.split(" ")[1];
 
         //check the input after mark is a number
@@ -154,6 +156,7 @@ public class Parser {
         }
         String description = checkTime[0];
         String deadLine = checkTime[1];
+
         return new String[]{description, deadLine};
 
     }

@@ -44,6 +44,8 @@ public class Storage {
      * @return List of tasks that store in the filePath.
      */
     public ArrayList<Task> loadTask() {
+        assert filePath != null : "File path should not be null";
+
         ArrayList<Task> tasks = new ArrayList<>();
         try {
             if (!Files.exists(filePath)) {
@@ -108,7 +110,10 @@ public class Storage {
      * @param tasks The list of task to be saved.
      */
     public void saveTask(TaskList tasks) {
-        ArrayList<String> saveTask = getSaveTask(tasks);
+        ArrayList<String> saveTask = new ArrayList<>();
+        for (Task currTask : tasks.get()) {
+            saveTask.add(currTask.stringSaveToFile());
+        }
 
         try {
             Files.write(filePath, saveTask);
