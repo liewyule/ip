@@ -1,5 +1,6 @@
 package holiday.task;
 
+import java.time.LocalDateTime;
 /**
  * Represents a generic task with description and completion status.
  * <p>
@@ -59,5 +60,9 @@ public class Task {
 
     public String getDescription() {
         return this.description;
+    }
+
+    public LocalDateTime getTime() {
+        return null;
     }
 }

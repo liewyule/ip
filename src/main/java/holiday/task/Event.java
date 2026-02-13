@@ -61,4 +61,9 @@ public class Event extends Task {
         return "E" + " | " + (this.isDone ? "1" : "0") + " | " + this.description + " | "
                 + this.from.format(INPUT_FORMAT) + " | " + this.to.format(INPUT_FORMAT);
     }
+
+    @Override
+    public LocalDateTime getTime() {
+        return from;
+    }
 }

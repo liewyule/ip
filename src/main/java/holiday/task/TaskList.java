@@ -99,4 +99,9 @@ public class TaskList {
     public void sortByName() {
         taskList.sort(Comparator.comparing(Task::getDescription));
     }
+
+    public void sortByTime() {
+        taskList.sort(Comparator.comparing(Task::getTime,
+                Comparator.nullsLast(Comparator.naturalOrder())));
+    }
 }

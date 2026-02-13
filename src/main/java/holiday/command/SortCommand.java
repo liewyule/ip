@@ -25,6 +25,10 @@ public class SortCommand extends Command {
             tasks.sortByName();
             storage.saveTask(tasks);
             return ui.printList(tasks);
+        } else if (description.equals("time")) {
+            tasks.sortByTime();
+            storage.saveTask(tasks);
+            return ui.printList(tasks);
         } else {
             return ui.printNoSuchCommand();
         }
