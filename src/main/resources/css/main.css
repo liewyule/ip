@@ -1,0 +1,68 @@
+.root {
+    -sky-primary: #87CEEB;
+    -sky-light: #E1F5FE;
+    -sky-dark: #0288D1;
+    -sky-hover: #B3E5FC;
+
+    -fx-base: white;
+    -fx-background-color: -sky-light;
+}
+
+.text-field {
+    -fx-background-color: white, white, white;
+    -fx-background-insets: 0, 0 0 1 0, 0;
+    -fx-border-color: transparent transparent -sky-primary transparent;
+    -fx-border-width: 2px;
+    -fx-font-family: "Segoe UI", "Arial";
+    -fx-font-size: 14px;
+    -fx-padding: 8px;
+}
+
+.text-field:focused {
+    -fx-border-color: transparent transparent -sky-dark transparent;
+}
+
+.button {
+    -fx-background-color: -sky-primary;
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI", "Arial";
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-padding: 8 15 8 15;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: -sky-dark;
+}
+
+.button:pressed {
+    -fx-background-color: #01579B;
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+.scroll-pane, .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar {
+    -fx-background-color: transparent;
+    -fx-pref-width: 8px;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: -sky-primary;
+    -fx-background-radius: 10px;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: -sky-dark;
+}
+
+/* Hides the increment and decrement buttons. */
+.scroll-bar .increment-button, .scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-shape: "";
+}
+
