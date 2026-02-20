@@ -15,7 +15,7 @@ public class ExitCommand extends Command {
      *
      * @param tasks
      * @param ui  UI for displaying feedback.
-     * @param storage
+     * @param storage Storage to save the task
      * @throws BotException
      */
     @Override

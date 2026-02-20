@@ -15,7 +15,7 @@ public class ListCommand extends Command {
      *
      * @param tasks Task list to be printed.
      * @param ui UI for displaying feedback.
-     * @param storage
+     * @param storage Storage to save the task
      * @throws BotException
      */
     @Override

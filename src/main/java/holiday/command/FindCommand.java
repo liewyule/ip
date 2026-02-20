@@ -29,7 +29,7 @@ public class FindCommand extends Command {
      * .
      * @param tasks The full task list.
      * @param ui UI for displaying feedback.
-     * @param storage
+     * @param storage Storage to save the task
      * @throws BotException
      */
     @Override

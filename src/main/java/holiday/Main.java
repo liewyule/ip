@@ -15,8 +15,10 @@ public class Main extends Application {
 
     private Holiday holiday = new Holiday();
 
+
     @Override
     public void start(Stage stage) {
+
         try {
             //load the UI
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));

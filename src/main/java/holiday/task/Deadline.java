@@ -56,6 +56,11 @@ public class Deadline extends Task {
                 + " | " + this.description + " | " + this.dueBy.format(INPUT_FORMAT);
     }
 
+    /**
+     * Returns the deadline of the task.
+     *
+     * @return Deadline of the task.
+     */
     @Override
     public LocalDateTime getTime() {
         return dueBy;

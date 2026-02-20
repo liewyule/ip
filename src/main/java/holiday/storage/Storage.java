@@ -67,6 +67,12 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Parses a line from the file and reconstructs the corresponding task.
+     *
+     * @param line A line from the file representing a task.
+     * @return The reconstructed Task object, or null if the line is invalid.
+     */
     private Task parseTaskFromLine(String line) {
         String[] parts = line.split(" \\| ");
         Task task;
@@ -121,6 +127,7 @@ public class Storage {
             System.out.println("Error saving tasks.");
         }
     }
+
 
     private static ArrayList<String> getSaveTask(TaskList tasks) {
         ArrayList<String> saveTask = new ArrayList<>();

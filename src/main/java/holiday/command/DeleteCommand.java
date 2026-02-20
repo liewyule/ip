@@ -26,7 +26,7 @@ public class DeleteCommand extends Command {
      *
      * @param tasks Task to be deleted
      * @param ui UI for displaying feedback.s
-     * @param storage
+     * @param storage Storage to save the task
      * @throws BotException
      */
     @Override

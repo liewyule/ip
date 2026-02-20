@@ -26,10 +26,10 @@ public class AddCommand extends Command {
     /**
      * Construct a addcomand
      *
-     * @param type
-     * @param description
-     * @param from
-     * @param to
+     * @param type Type of the task to be added (e.g. "todo", "deadline", "event")
+     * @param description Description of the task to be added
+     * @param from Start date of the task to be added (only for event)
+     * @param to Due date of the task to be added (only for deadline and event)
      */
     public AddCommand(String type, String description, String from, String to) {
         this.type = type;
@@ -49,8 +49,8 @@ public class AddCommand extends Command {
      *
      * @param tasks   Task list to add the task to.
      * @param ui      UI for displaying feedback.
-     * @param storage
-     * @throws BotException
+     * @param storage Storage to save the task
+     * @throws BotException if there is an error during the execution of the command.
      */
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
@@ -69,6 +69,10 @@ public class AddCommand extends Command {
         return ui.printAddedTask(task, tasks.size());
     }
 
+    /**
+     * Create a task based on the input type and description.
+     * @return A task object based on the input type and description, or null if the type is invalid.
+     */
     private Task createTask() {
         switch (type) {
         case TODO_TYPE:
