@@ -10,14 +10,14 @@ import holiday.ui.Ui;
  */
 public class GreetingCommand extends Command {
 
-        /**
-        * Execute the GreetingCommand and print the greeting message.
-        *
-        * @param tasks
-        * @param ui  UI for displaying feedback.
-        * @param storage Storage to save the task
-        * @throws BotException
-        */
+    /**
+     * Executes the greeting command and returns the greeting message.
+     * @param tasks
+     * @param ui ui to print the greeting message
+     * @param storage storage to save the data, not used in this command
+     * @return the greeting message
+     * @throws BotException if there is an error during execution
+     */
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) throws BotException {
 

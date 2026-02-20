@@ -30,7 +30,7 @@ public class Ui {
      * Prints the goodbye message when user input "bye" and program ends.
      */
     public String printGoodBye() {
-        return "Bye. Hope to see you again soon !";
+        return "Bye~~ Enjoy your holiday and hope to see you again soon !";
     }
 
 
@@ -86,6 +86,11 @@ public class Ui {
      * Print all the task in the list.
      */
     public String printList(TaskList tasks) {
+
+        if (tasks.get().isEmpty()) {
+            return "Oh no, there are no tasks in your list!";
+        }
+
         assert tasks != null : "TaskList cannot be null";
         StringBuilder stringbuilder = new StringBuilder();
         stringbuilder.append("Here are the tasks in your list:\n");

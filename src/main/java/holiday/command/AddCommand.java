@@ -73,7 +73,7 @@ public class AddCommand extends Command {
      * Create a task based on the input type and description.
      * @return A task object based on the input type and description, or null if the type is invalid.
      */
-    private Task createTask() {
+    private Task createTask() throws BotException {
         switch (type) {
         case TODO_TYPE:
             return new ToDo(description);

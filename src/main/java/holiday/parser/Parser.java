@@ -11,6 +11,9 @@ import holiday.command.ListCommand;
 import holiday.command.MarkCommand;
 import holiday.command.SortCommand;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Parses raw user string input into Command.
  * <p>
@@ -31,6 +34,8 @@ public class Parser {
     private static final String CMD_BYE = "bye";
     private static final String CMD_HELLO = "hello";
     private static final String CMD_SORT = "sort";
+    private static final DateTimeFormatter INPUT_FORMAT =
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     /**
      * Parses the user raw input and returns the corresponding command.
      *
@@ -114,7 +119,7 @@ public class Parser {
 
         //check the input after mark is a number
         if (isNotInteger(checkNum)) {
-            throw new BotException("please indicate the task number");
+            throw new BotException("please specify a valid task number");
         }
         return Integer.parseInt(checkNum) - 1;
     }
@@ -171,10 +176,16 @@ public class Parser {
         //check the deadline cannot be empty
         String[] checkTime = descriptionAndDeadline.split(" /by ", 2);
         if (checkTime.length < 2 || checkTime[1].trim().isEmpty()) {
-            throw new BotException("pls specify a deadline");
+            throw new BotException("please specify a deadline");
         }
         String description = checkTime[0];
         String deadLine = checkTime[1];
+
+        try {
+            LocalDateTime.parse(deadLine, INPUT_FORMAT);
+        } catch (Exception e) {
+            throw new BotException("Deadline must be in the format YYYY-MM-DD HHMM (e.g., 2026-02-21 2359)");
+        }
 
         return new String[]{description, deadLine};
 
@@ -212,6 +223,13 @@ public class Parser {
 
         String start = checkEnd[0];
         String end = checkEnd[1];
+
+        try {
+            LocalDateTime.parse(start, INPUT_FORMAT);
+            LocalDateTime.parse(end, INPUT_FORMAT);
+        } catch (Exception e) {
+            throw new BotException("specify the time in the format YYYY-MM-DD HHMM (e.g., 2026-02-21 2359)");
+        }
         return new String[]{description, start, end};
 
     }

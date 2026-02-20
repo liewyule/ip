@@ -23,7 +23,7 @@ public class Main extends Application {
             //load the UI
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
             AnchorPane ap = fxmlLoader.load();
-            Scene scene = new Scene(ap);
+            Scene scene = new Scene(ap, 400, 600);
             stage.setScene(scene);
             fxmlLoader.<MainWindow>getController().setDuke(holiday);
             stage.show();
