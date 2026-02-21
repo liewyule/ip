@@ -38,7 +38,6 @@ public class FindCommand extends Command {
         assert ui != null : "Ui cannot be null";
         assert storage != null : "Storage cannot be null";
 
-        ArrayList<Task> printTask = new ArrayList<>();
         ArrayList<Task> matchingTasks = new ArrayList<>();
         for (Task currTask : tasks.get()) {
             if (isMatch(currTask)) {
