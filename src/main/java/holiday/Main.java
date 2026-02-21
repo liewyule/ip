@@ -21,6 +21,7 @@ public class Main extends Application {
 
         try {
             //load the UI
+            stage.setTitle("Holiday");
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap, 400, 600);
