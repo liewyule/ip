@@ -2,9 +2,10 @@ package holiday.task;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Test;
+
 import holiday.BotException;
 import holiday.parser.Parser;
-import org.junit.jupiter.api.Test;
 
 public class ParserTest {
 
