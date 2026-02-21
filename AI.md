@@ -14,3 +14,8 @@
 3. **Task**: Improve the error handling in the code
 
    **Outcome**: AI successfully ensure more robust error checking of the code and the code completion save a lot of time on typing the repeated code.
+
+
+4. **Task**: Write unit tests for the code
+
+   **Outcome**: AI can generate unit tests based on the code precisely, save a lot of time on manually writing the test case.

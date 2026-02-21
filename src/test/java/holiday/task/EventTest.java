@@ -11,4 +11,5 @@ public class EventTest {
         Event task = new Event("meeting", "2026-02-02 1400", "2026-02-02 1600");
         assertEquals("[E][ ] meeting (from: Feb 02 2026 1400 to: Feb 02 2026 1600)", task.toString());
     }
+
 }
