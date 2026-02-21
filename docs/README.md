@@ -2,7 +2,7 @@
 
 ![Ui](Ui.png)
 
-Holiday is a **desktop app for managing tasks, optimized for use via a Command Line Interface (CLI)** while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Holiday can help you manage your tasks faster than traditional GUI apps.
+Holiday is a  CLI-based task management bot that helps you to keep track of your tasks and event. It is designed for users who prefer to manage their tasks via a command-line interface, while still providing a user-friendly experience.
 
 ---
 
@@ -10,7 +10,7 @@ Holiday is a **desktop app for managing tasks, optimized for use via a Command L
 
 1. Ensure you have **Java 17 or above** installed on your computer.
 
-2. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
+2. Download the latest `.jar` file 
 
 3. Copy the file to the folder you want to use as the home folder for Holiday.
 
@@ -24,7 +24,7 @@ Holiday is a **desktop app for managing tasks, optimized for use via a Command L
 
 ## Features
 
-> **:information_source: Notes about the command format:**
+> **information_source: Notes about the command format:**
 >
 > - Words in `UPPER_CASE` are the parameters to be supplied by the user.
 >   - e.g., in `todo DESCRIPTION`, `DESCRIPTION` is a parameter which can be used as `todo read book`.
@@ -244,7 +244,7 @@ Exits the Holiday application.
 
 **Example output:**
 ```
-Bye. Hope to see you again soon!
+Bye~~ Enjoy your holiday and hope to see you again soon !
 ```
 
 ---

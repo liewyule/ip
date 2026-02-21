@@ -1,11 +1,10 @@
 package holiday.task;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import holiday.BotException;
 import holiday.parser.Parser;
-
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ParserTest {
 
@@ -23,7 +22,9 @@ public class ParserTest {
     public void parseDeadlineArgs_emptyTask_throwsException() {
         String input = "deadline    ";
 
-        BotException exception = org.junit.jupiter.api.Assertions.assertThrows(BotException.class, () -> Parser.parseDeadlineArgs(input));
+        BotException exception = org.junit.jupiter.api.Assertions.assertThrows(
+                BotException.class, () -> Parser.parseDeadlineArgs(input)
+        );
 
         assertEquals("task cannot be empty!!!", exception.getMessage());
     }
@@ -32,7 +33,9 @@ public class ParserTest {
     public void parseDeadlineArgs_invalidDateFormat_throwsException() {
         String input = "deadline submit report /by tomorrow";
 
-        BotException exception = org.junit.jupiter.api.Assertions.assertThrows(BotException.class, () -> Parser.parseDeadlineArgs(input));
+        BotException exception = org.junit.jupiter.api.Assertions.assertThrows(
+                BotException.class, () -> Parser.parseDeadlineArgs(input)
+        );
 
         assertEquals("Deadline must be in the format YYYY-MM-DD HHMM (e.g., 2026-02-21 2359)", exception.getMessage());
     }
