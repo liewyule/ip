@@ -57,8 +57,8 @@ public class Ui {
      */
     public String printDeletedTask(Task task, int total) {
         assert task != null : "Task deleted cannot be null";
-        return "Noted. I've removed this task:" + task.toString()
-                + "Now you have " + total + " tasks in the list.";
+        return "Noted. I've removed this task:\n" + "  " + task.toString()
+                + "\n" + "Now you have " + total + " tasks in the list.";
     }
 
     /**
@@ -68,7 +68,8 @@ public class Ui {
      */
     public String printUnmark(Task task) {
         assert task != null : "Unmark task cannot be null";
-        return "OK, I've marked this task as not done yet:" + task.toString();
+        return "OK, I've marked this task as not done yet:\n" + "  "
+                + task.toString();
     }
 
     /**
@@ -78,7 +79,8 @@ public class Ui {
      */
     public String printMark(Task task) {
         assert task != null : "Mark task cannot be null";
-        return "Nice! I've marked this task as done:" + task.toString();
+        return "Nice! I've marked this task as done:\n" + "  "
+                + task.toString();
     }
 
     /**
@@ -114,6 +116,7 @@ public class Ui {
     public String printAddedTask(Task task, int total) {
         assert task != null : "Added task cannot be null";
         return "Got it. I've added this task:\n"
+                + "  "
                 + task + "\n"
                 + "Now you have " + total + " tasks in the list.";
     }

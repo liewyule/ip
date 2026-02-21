@@ -49,9 +49,8 @@ Adds a todo task to the task list.
 
 **Format:** `todo DESCRIPTION`
 
-**Examples:**
-- `todo read book`
-- `todo buy groceries`
+**Examples:** `todo read book`
+
 
 **Example output:**
 ```
@@ -71,9 +70,8 @@ Adds a task with a deadline to the task list.
 - The deadline must be specified using `/by` followed by the date and time.
 - Date and time format: `YYYY-MM-DD HHmm` (e.g., `2026-03-15 2359`)
 
-**Examples:**
-- `deadline submit assignment /by 2026-03-15 2359`
-- `deadline return library book /by 2026-02-28 1800`
+**Examples:** `deadline submit assignment /by 2026-03-15 2359`
+
 
 **Example output:**
 ```
@@ -94,9 +92,8 @@ Adds an event task with a start and end time to the task list.
 - The end time must be specified using `/to` followed by the date and time.
 - Date and time format: `YYYY-MM-DD HHmm` (e.g., `2026-03-15 1400`)
 
-**Examples:**
-- `event project meeting /from 2026-03-01 1400 /to 2026-03-01 1600`
-- `event conference /from 2026-04-10 0900 /to 2026-04-12 1700`
+**Examples:** `event project meeting /from 2026-03-01 1400 /to 2026-03-01 1600`
+
 
 **Example output:**
 ```
@@ -133,9 +130,7 @@ Marks a task as completed.
 - The index refers to the index number shown in the task list.
 - The index **must be a positive integer** 1, 2, 3, ...
 
-**Examples:**
-- `list` followed by `mark 2` marks the 2nd task as done.
-- `mark 1` marks the 1st task as done.
+**Examples:** `mark 1` 
 
 **Example output:**
 ```
@@ -155,8 +150,7 @@ Marks a completed task as not done.
 - The index refers to the index number shown in the task list.
 - The index **must be a positive integer** 1, 2, 3, ...
 
-**Examples:**
-- `unmark 1` marks the 1st task as not done.
+**Examples:** `unmark 1` 
 
 **Example output:**
 ```
@@ -177,9 +171,7 @@ Finds tasks whose descriptions contain any of the given keywords.
 - Only the task description is searched.
 - Tasks matching at least one keyword will be returned (i.e., OR search).
 
-**Examples:**
-- `find book` returns tasks containing "book"
-- `find book assignment` returns tasks containing "book" or "assignment"
+**Examples:** `find book assignment` 
 
 **Example output:**
 ```
@@ -200,9 +192,7 @@ Deletes a task from the task list.
 - The index refers to the index number shown in the task list.
 - The index **must be a positive integer** 1, 2, 3, ...
 
-**Examples:**
-- `list` followed by `delete 2` deletes the 2nd task.
-- `delete 1` deletes the 1st task.
+**Examples:** `delete 1` 
 
 **Example output:**
 ```
