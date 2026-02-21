@@ -50,7 +50,7 @@ public class FindCommand extends Command {
 
     private boolean isMatch(Task task) {
         for (String k : keywords) {
-            if (task.toString().contains(k)) {
+            if (task.getDescription().contains(k)) {
                 return true;
             }
         }
