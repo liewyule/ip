@@ -128,13 +128,5 @@ public class Storage {
         }
     }
 
-
-    private static ArrayList<String> getSaveTask(TaskList tasks) {
-        ArrayList<String> saveTask = new ArrayList<>();
-        for (Task currTask : tasks.get()) {
-            saveTask.add(currTask.stringSaveToFile());
-        }
-        return saveTask;
-    }
 }
 
